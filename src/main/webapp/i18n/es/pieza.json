@@ -1,0 +1,22 @@
+{
+    "dentalApp": {
+        "pieza" : {
+            "home": {
+                "title": "Piezas",
+                "createLabel": "Crear nueva Pieza",
+                "createOrEditLabel": "Crear o editar una Pieza"
+            },
+            "created": "Una nueva Pieza ha sido creada con el identificador {{ param }}",
+            "updated": "Una Pieza ha sido actualizada con el identificador {{ param }}",
+            "deleted": "Una Pieza ha sido eliminada con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar la Pieza {{ id }}?"
+            },
+            "detail": {
+                "title": "Pieza"
+            },
+            "numeroPieza": "Número de Pieza",
+            "nombre": "Nombre"
+        }
+    }
+}

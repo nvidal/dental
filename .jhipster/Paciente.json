@@ -1,0 +1,86 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "procedimientos",
+            "otherEntityName": "procedimiento",
+            "otherEntityRelationshipName": "paciente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "saldos",
+            "otherEntityName": "saldo",
+            "otherEntityRelationshipName": "paciente"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nombres",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apellidos",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "celular",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "alergico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "diabetes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "presionAlta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tiroides",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cicatrizacion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cardiaca",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "farmacos",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171002215810",
+    "entityTableName": "paciente",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,75 @@
+
+<div>
+    <h2>({{vm.paciente.id}}) {{vm.paciente.nombres}} {{vm.paciente.apellidos}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="dentalApp.paciente.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.paciente.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.nombres">Nombres</span></dt>
+        <dd>
+            <span>{{vm.paciente.nombres}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.apellidos">Apellidos</span></dt>
+        <dd>
+            <span>{{vm.paciente.apellidos}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.telefono">Telefono</span></dt>
+        <dd>
+            <span>{{vm.paciente.telefono}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.celular">Celular</span></dt>
+        <dd>
+            <span>{{vm.paciente.celular}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.direccion">Direccion</span></dt>
+        <dd>
+            <span>{{vm.paciente.direccion}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.mail">Mail</span></dt>
+        <dd>
+            <span>{{vm.paciente.mail}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.alergico">Alergico</span></dt>
+        <dd>
+            <span>{{vm.paciente.alergico}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.diabetes">Diabetes</span></dt>
+        <dd>
+            <span>{{vm.paciente.diabetes}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.presionAlta">Presion Alta</span></dt>
+        <dd>
+            <span>{{vm.paciente.presionAlta}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.tiroides">Tiroides</span></dt>
+        <dd>
+            <span>{{vm.paciente.tiroides}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.cicatrizacion">Cicatrizacion</span></dt>
+        <dd>
+            <span>{{vm.paciente.cicatrizacion}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.cardiaca">Cardiaca</span></dt>
+        <dd>
+            <span>{{vm.paciente.cardiaca}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.paciente.farmacos">Farmacos</span></dt>
+        <dd>
+            <span>{{vm.paciente.farmacos}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="paciente-detail.edit({id:vm.paciente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

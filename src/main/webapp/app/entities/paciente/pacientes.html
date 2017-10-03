@@ -1,0 +1,86 @@
+<div>
+    <h2 data-translate="dentalApp.paciente.home.title">Pacientes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="paciente.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="dentalApp.paciente.home.createLabel">
+                        Create new Paciente
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <!--<th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="fecha"><span data-translate="dentalApp.paciente.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="nombres"><span data-translate="dentalApp.paciente.nombres">Nombres</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="apellidos"><span data-translate="dentalApp.paciente.apellidos">Apellidos</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="telefono"><span data-translate="dentalApp.paciente.telefono">Telefono</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="celular"><span data-translate="dentalApp.paciente.celular">Celular</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="direccion"><span data-translate="dentalApp.paciente.direccion">Direccion</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="mail"><span data-translate="dentalApp.paciente.mail">Mail</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="alergico"><span data-translate="dentalApp.paciente.alergico">Alergico</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="diabetes"><span data-translate="dentalApp.paciente.diabetes">Diabetes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presionAlta"><span data-translate="dentalApp.paciente.presionAlta">Presion Alta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tiroides"><span data-translate="dentalApp.paciente.tiroides">Tiroides</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cicatrizacion"><span data-translate="dentalApp.paciente.cicatrizacion">Cicatrizacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cardiaca"><span data-translate="dentalApp.paciente.cardiaca">Cardiaca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="farmacos"><span data-translate="dentalApp.paciente.farmacos">Farmacos</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paciente in vm.pacientes track by paciente.id">
+                    <!--<td><a ui-sref="paciente-detail({id:paciente.id})">{{paciente.id}}</a></td>
+                    <td>{{paciente.fecha | date:'mediumDate'}}</td>-->
+                    <td>{{paciente.nombres}}</td>
+                    <td>{{paciente.apellidos}}</td>
+                    <td>{{paciente.telefono}}</td>
+                    <td>{{paciente.celular}}</td>
+                    <!--<td>{{paciente.direccion}}</td>-->
+                    <td>{{paciente.mail}}</td>
+                    <!--<td>{{paciente.alergico}}</td>
+                    <td>{{paciente.diabetes}}</td>
+                    <td>{{paciente.presionAlta}}</td>
+                    <td>{{paciente.tiroides}}</td>
+                    <td>{{paciente.cicatrizacion}}</td>
+                    <td>{{paciente.cardiaca}}</td>
+                    <td>{{paciente.farmacos}}</td>-->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="paciente-detail({id:paciente.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.view"></span>-->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="paciente.edit({id:paciente.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.edit"></span>-->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="paciente.delete({id:paciente.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.delete"></span>-->
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

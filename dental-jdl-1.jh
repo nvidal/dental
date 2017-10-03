@@ -1,0 +1,57 @@
+entity Paciente {
+    //Datos patronimicos
+    fecha LocalDate,
+    nombres String required,
+    apellidos String required,
+    telefono String,
+    celular String,
+    direccion String,
+    mail String,
+    //Antecedentes medicos
+    alergico String,
+    diabetes String,
+    presionAlta String,
+    tiroides String,
+    cicatrizacion String,
+    cardiaca String,
+    farmacos String
+}
+
+entity Procedimiento{
+    fecha LocalDate required,
+    //pieza Pieza,
+    procedimiento String required
+}
+
+entity Pieza{
+    numeroPieza Integer required,
+    nombre String required
+}
+
+entity Saldo {
+    fecha LocalDate required,
+    descripcion String required,
+    debe Float,
+    haber Float,
+    //saldo Float,
+}
+
+relationship OneToMany {
+    Paciente{procedimientos} to Procedimiento{paciente required},
+    Paciente{saldos} to Saldo{paciente required} 
+}
+
+relationship ManyToOne {
+  Procedimiento{pieza} to Pieza
+}
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate all with pagination
+
+//dto Factura with mapstruct
+
+// Set service options to all except few
+service Paciente, Saldo with serviceImpl
+

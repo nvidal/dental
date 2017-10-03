@@ -1,0 +1,135 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPacienteLabel" data-translate="dentalApp.paciente.home.createOrEditLabel">Create or edit a Paciente</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <h5 class="modal-title" style="text-align: center;" id="personales" data-translate="dentalApp.paciente.home.personalesLabel">Datos personales</h5>
+        <hr>
+
+        <div class="form-group" ng-show="vm.paciente.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.paciente.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.fecha" for="field_fecha">Fecha</label>
+                <div class="input-group">
+                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.paciente.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.nombres" for="field_nombres">Nombres</label>
+            <input type="text" class="form-control" name="nombres" id="field_nombres"
+                    ng-model="vm.paciente.nombres"
+                    required/>
+            <div ng-show="editForm.nombres.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombres.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.apellidos" for="field_apellidos">Apellidos</label>
+            <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                    ng-model="vm.paciente.apellidos"
+                    required/>
+            <div ng-show="editForm.apellidos.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.apellidos.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.telefono" for="field_telefono">Telefono</label>
+            <input type="text" class="form-control" name="telefono" id="field_telefono"
+                    ng-model="vm.paciente.telefono"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.celular" for="field_celular">Celular</label>
+            <input type="text" class="form-control" name="celular" id="field_celular"
+                    ng-model="vm.paciente.celular"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.direccion" for="field_direccion">Direccion</label>
+            <input type="text" class="form-control" name="direccion" id="field_direccion"
+                    ng-model="vm.paciente.direccion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.mail" for="field_mail">Mail</label>
+            <input type="text" class="form-control" name="mail" id="field_mail"
+                    ng-model="vm.paciente.mail"
+                    />
+        </div>
+
+
+        <!-- Medicos -->
+        <h5 class="modal-title" style="text-align: center;" id="anteMedicos" data-translate="dentalApp.paciente.home.anteMedicosLabel">Antecedentes médicos</h5>
+        <hr>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.alergico" for="field_alergico">Alergico</label>
+            <input type="text" class="form-control" name="alergico" id="field_alergico"
+                    ng-model="vm.paciente.alergico"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.diabetes" for="field_diabetes">Diabetes</label>
+            <input type="text" class="form-control" name="diabetes" id="field_diabetes"
+                    ng-model="vm.paciente.diabetes"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.presionAlta" for="field_presionAlta">Presión sanguinea alta</label>
+            <input type="text" class="form-control" name="presionAlta" id="field_presionAlta"
+                    ng-model="vm.paciente.presionAlta"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.tiroides" for="field_tiroides">Enfermedades de la tiroides</label>
+            <input type="text" class="form-control" name="tiroides" id="field_tiroides"
+                    ng-model="vm.paciente.tiroides"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.cicatrizacion" for="field_cicatrizacion">Enfermedades sanguineas - cicatrización</label>
+            <input type="text" class="form-control" name="cicatrizacion" id="field_cicatrizacion"
+                    ng-model="vm.paciente.cicatrizacion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.cardiaca" for="field_cardiaca">Enfermedades cardíacas</label>
+            <input type="text" class="form-control" name="cardiaca" id="field_cardiaca"
+                    ng-model="vm.paciente.cardiaca"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.farmacos" for="field_farmacos">Fármacos que toma: anticoagulantes?</label>
+            <input type="text" class="form-control" name="farmacos" id="field_farmacos"
+                    ng-model="vm.paciente.farmacos"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

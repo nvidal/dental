@@ -1,0 +1,38 @@
+{
+    "dentalApp": {
+        "paciente" : {
+            "home": {
+                "title": "Pacientes",
+                "createLabel": "Crear nuevo Paciente",
+                "createOrEditLabel": "Crear o editar Paciente",
+                "anteMedicosLabel": "Antecedentes médicos",
+                "personalesLabel" : "Datos personales"
+            },
+            "created": "Un nuevo Paciente ha sido creado con el identificador {{ param }}",
+            "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Paciente ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Paciente {{ id }}?"
+            },
+            "detail": {
+                "title": "Paciente"
+            },
+            "fecha": "Fecha",
+            "nombres": "Nombres",
+            "apellidos": "Apellidos",
+            "telefono": "Telefono",
+            "celular": "Celular",
+            "direccion": "Direccion",
+            "mail": "Mail",
+            "alergico": "Alergico",
+            "diabetes": "Diabetes",
+            "presionAlta": "Presión sanguinea alta",
+            "tiroides": "Enfermedades de la tiroides",
+            "cicatrizacion": "Enfermedades sanguineas - cicatrización",
+            "cardiaca": "Enfermedades cardíacas",
+            "farmacos": "Fármacos que toma: anticoagulantes?",
+            "procedimientos": "Procedimientos",
+            "saldos": "Saldos"
+        }
+    }
+}

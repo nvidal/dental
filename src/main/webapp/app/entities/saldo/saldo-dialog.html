@@ -1,0 +1,77 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySaldoLabel" data-translate="dentalApp.saldo.home.createOrEditLabel">Create or edit a Saldo</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.saldo.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.saldo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.saldo.fecha" for="field_fecha">Fecha</label>
+                <div class="input-group">
+                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.saldo.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.fecha.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.saldo.descripcion" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.saldo.descripcion"
+                    required/>
+            <div ng-show="editForm.descripcion.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.descripcion.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.saldo.debe" for="field_debe">Debe</label>
+            <input type="number" class="form-control" name="debe" id="field_debe"
+                    ng-model="vm.saldo.debe"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.saldo.haber" for="field_haber">Haber</label>
+            <input type="number" class="form-control" name="haber" id="field_haber"
+                    ng-model="vm.saldo.haber"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="dentalApp.saldo.paciente" for="field_paciente">Paciente</label>
+            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.saldo.paciente" ng-options="paciente as paciente.id for paciente in vm.pacientes track by paciente.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.paciente.$invalid">
+            <p class="help-block"
+                ng-show="editForm.paciente.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="dentalApp.saldo.detail.title">Saldo</span> {{vm.saldo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="dentalApp.saldo.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.saldo.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.saldo.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.saldo.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.saldo.debe">Debe</span></dt>
+        <dd>
+            <span>{{vm.saldo.debe}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.saldo.haber">Haber</span></dt>
+        <dd>
+            <span>{{vm.saldo.haber}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.saldo.paciente">Paciente</span></dt>
+        <dd>
+            <a ui-sref="paciente-detail({id:vm.saldo.paciente.id})">{{vm.saldo.paciente.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="saldo-detail.edit({id:vm.saldo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

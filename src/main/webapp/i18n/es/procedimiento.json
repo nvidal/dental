@@ -1,0 +1,24 @@
+{
+    "dentalApp": {
+        "procedimiento" : {
+            "home": {
+                "title": "Procedimientos",
+                "createLabel": "Crear nuevo Procedimiento",
+                "createOrEditLabel": "Crear o editar Procedimiento"
+            },
+            "created": "Un nuevo Procedimiento ha sido creado con el identificador {{ param }}",
+            "updated": "Un Procedimiento ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Procedimiento ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Procedimiento {{ id }}?"
+            },
+            "detail": {
+                "title": "Procedimiento"
+            },
+            "fecha": "Fecha",
+            "procedimiento": "Procedimiento",
+            "pieza": "Pieza",
+            "paciente": "Paciente"
+        }
+    }
+}

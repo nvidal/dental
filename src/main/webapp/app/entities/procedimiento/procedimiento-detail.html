@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="dentalApp.procedimiento.detail.title">Procedimiento</span> {{vm.procedimiento.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="dentalApp.procedimiento.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.procedimiento.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.procedimiento.procedimiento">Procedimiento</span></dt>
+        <dd>
+            <span>{{vm.procedimiento.procedimiento}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.procedimiento.pieza">Pieza</span></dt>
+        <dd>
+            <a ui-sref="pieza-detail({id:vm.procedimiento.pieza.id})">{{vm.procedimiento.pieza.id}}</a>
+        </dd>
+        <dt><span data-translate="dentalApp.procedimiento.paciente">Paciente</span></dt>
+        <dd>
+            <a ui-sref="paciente-detail({id:vm.procedimiento.paciente.id})">{{vm.procedimiento.paciente.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="procedimiento-detail.edit({id:vm.procedimiento.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
