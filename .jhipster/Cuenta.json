@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "paciente",
+            "otherEntityName": "paciente",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "debe",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "haber",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20171005013337",
+    "entityTableName": "cuenta",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,70 @@
+<div>
+    <h2 data-translate="dentalApp.cuenta.home.title">Cuentas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="cuenta.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="dentalApp.cuenta.home.createLabel">
+                        Create new Cuenta
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fecha"><span data-translate="dentalApp.cuenta.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span data-translate="dentalApp.cuenta.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="debe"><span data-translate="dentalApp.cuenta.debe">Debe</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="haber"><span data-translate="dentalApp.cuenta.haber">Haber</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paciente.id"><span data-translate="dentalApp.cuenta.paciente">Paciente</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cuenta in vm.cuentas track by cuenta.id">
+                    <td><a ui-sref="cuenta-detail({id:cuenta.id})">{{cuenta.id}}</a></td>
+                        <td>{{cuenta.fecha | date:'mediumDate'}}</td>
+                    <td>{{cuenta.descripcion}}</td>
+                    <td>{{cuenta.debe | currency: '$'}}</td>
+                    <td>{{cuenta.haber | currency: '$'}}</td>
+                    <td>
+                        <a ui-sref="paciente-detail({id:cuenta.paciente.id})">{{cuenta.paciente.nombres}} {{cuenta.paciente.apellidos}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="cuenta-detail({id:cuenta.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.view"></span>-->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cuenta.edit({id:cuenta.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.edit"></span>-->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cuenta.delete({id:cuenta.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.delete"></span>-->
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

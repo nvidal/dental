@@ -79,7 +79,7 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Saldo> saldos = new HashSet<>();
+    private Set<Cuenta> cuentas = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -297,29 +297,29 @@ public class Paciente implements Serializable {
         this.procedimientos = procedimientos;
     }
 
-    public Set<Saldo> getSaldos() {
-        return saldos;
+    public Set<Cuenta> getCuentas() {
+        return cuentas;
     }
 
-    public Paciente saldos(Set<Saldo> saldos) {
-        this.saldos = saldos;
+    public Paciente cuentas(Set<Cuenta> cuentas) {
+        this.cuentas = cuentas;
         return this;
     }
 
-    public Paciente addSaldos(Saldo saldo) {
-        this.saldos.add(saldo);
-        saldo.setPaciente(this);
+    public Paciente addCuentas(Cuenta cuenta) {
+        this.cuentas.add(cuenta);
+        cuenta.setPaciente(this);
         return this;
     }
 
-    public Paciente removeSaldos(Saldo saldo) {
-        this.saldos.remove(saldo);
-        saldo.setPaciente(null);
+    public Paciente removeCuentas(Cuenta cuenta) {
+        this.cuentas.remove(cuenta);
+        cuenta.setPaciente(null);
         return this;
     }
 
-    public void setSaldos(Set<Saldo> saldos) {
-        this.saldos = saldos;
+    public void setCuentas(Set<Cuenta> cuentas) {
+        this.cuentas = cuentas;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

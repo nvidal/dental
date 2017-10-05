@@ -11,6 +11,7 @@
                 "procedimiento": "Procedimiento",
                 "pieza": "Pieza",
                 "saldo": "Saldo",
+                "cuenta": "Cuenta",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

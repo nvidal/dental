@@ -9,8 +9,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "saldos",
-            "otherEntityName": "saldo",
+            "relationshipName": "cuentas",
+            "otherEntityName": "cuenta",
             "otherEntityRelationshipName": "paciente"
         }
     ],

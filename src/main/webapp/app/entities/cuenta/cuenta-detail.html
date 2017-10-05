@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="dentalApp.cuenta.detail.title">Cuenta</span> {{vm.cuenta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="dentalApp.cuenta.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.cuenta.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.cuenta.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.cuenta.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.cuenta.debe">Debe</span></dt>
+        <dd>
+            <span>{{vm.cuenta.debe | currency: '$'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.cuenta.haber">Haber</span></dt>
+        <dd>
+            <span>{{vm.cuenta.haber | currency: '$'}}</span>
+        </dd>
+        <dt><span data-translate="dentalApp.cuenta.paciente">Paciente</span></dt>
+        <dd>
+            <a ui-sref="paciente-detail({id:vm.cuenta.paciente.id})">{{cuenta.paciente.nombres}} {{cuenta.paciente.apellidos}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="cuenta-detail.edit({id:vm.cuenta.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
