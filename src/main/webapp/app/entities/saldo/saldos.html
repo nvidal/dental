@@ -32,10 +32,10 @@
                     <td><a ui-sref="saldo-detail({id:saldo.id})">{{saldo.id}}</a></td>
                         <td>{{saldo.fecha | date:'mediumDate'}}</td>
                     <td>{{saldo.descripcion}}</td>
-                    <td>{{saldo.debe}}</td>
-                    <td>{{saldo.haber}}</td>
+                    <td>{{saldo.debe | currency: '$'}}</td>
+                    <td>{{saldo.haber | currency: '$'}}</td>
                     <td>
-                        <a ui-sref="paciente-detail({id:saldo.paciente.id})">{{saldo.paciente.id}}</a>
+                        <a ui-sref="paciente-detail({id:saldo.paciente.id})">{{saldo.paciente.nombres}} {{saldo.paciente.apellidos}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -43,19 +43,19 @@
                                     ui-sref="saldo-detail({id:saldo.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.view"></span>-->
                             </button>
                             <button type="submit"
                                     ui-sref="saldo.edit({id:saldo.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.edit"></span>-->
                             </button>
                             <button type="submit"
                                     ui-sref="saldo.delete({id:saldo.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                                <!--<span class="hidden-sm-down" data-translate="entity.action.delete"></span>-->
                             </button>
                         </div>
                     </td>

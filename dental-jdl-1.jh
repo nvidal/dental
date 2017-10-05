@@ -28,7 +28,7 @@ entity Pieza{
     nombre String required
 }
 
-entity Saldo {
+entity Cuenta {
     fecha LocalDate required,
     descripcion String required,
     debe Float,
@@ -38,7 +38,7 @@ entity Saldo {
 
 relationship OneToMany {
     Paciente{procedimientos} to Procedimiento{paciente required},
-    Paciente{saldos} to Saldo{paciente required} 
+    Paciente{cuentas} to Cuenta{paciente required} 
 }
 
 relationship ManyToOne {
@@ -53,5 +53,5 @@ paginate all with pagination
 //dto Factura with mapstruct
 
 // Set service options to all except few
-service Paciente, Saldo with serviceImpl
+service Paciente, Cuenta with serviceImpl
 

@@ -14,15 +14,15 @@
         </dd>
         <dt><span data-translate="dentalApp.saldo.debe">Debe</span></dt>
         <dd>
-            <span>{{vm.saldo.debe}}</span>
+            <span>{{vm.saldo.debe | currency: '$'}}</span>
         </dd>
         <dt><span data-translate="dentalApp.saldo.haber">Haber</span></dt>
         <dd>
-            <span>{{vm.saldo.haber}}</span>
+            <span>{{vm.saldo.haber | currency: '$'}}</span>
         </dd>
         <dt><span data-translate="dentalApp.saldo.paciente">Paciente</span></dt>
         <dd>
-            <a ui-sref="paciente-detail({id:vm.saldo.paciente.id})">{{vm.saldo.paciente.id}}</a>
+            <a ui-sref="paciente-detail({id:vm.saldo.paciente.id})">{{vm.saldo.paciente.nombres}} {{vm.saldo.paciente.apellidos}}</a>
         </dd>
     </dl>
 
