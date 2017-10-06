@@ -14,11 +14,11 @@
         </dd>
         <dt><span data-translate="dentalApp.procedimiento.pieza">Pieza</span></dt>
         <dd>
-            <a ui-sref="pieza-detail({id:vm.procedimiento.pieza.id})">{{vm.procedimiento.pieza.id}}</a>
+            <a ui-sref="pieza-detail({id:vm.procedimiento.pieza.id})">{{vm.procedimiento.pieza.numeroPieza}} ({{vm.procedimiento.pieza.nombre}})</a>
         </dd>
         <dt><span data-translate="dentalApp.procedimiento.paciente">Paciente</span></dt>
         <dd>
-            <a ui-sref="paciente-detail({id:vm.procedimiento.paciente.id})">{{vm.procedimiento.paciente.id}}</a>
+            <a ui-sref="paciente-detail({id:vm.procedimiento.paciente.id})">{{vm.procedimiento.paciente.nombres}} {{vm.procedimiento.paciente.apellidos}}</a>
         </dd>
     </dl>
 

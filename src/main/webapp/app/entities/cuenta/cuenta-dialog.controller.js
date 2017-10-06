@@ -11,6 +11,8 @@
         var vm = this;
 
         vm.cuenta = entity;
+        if (!vm.cuenta.fecha)
+            vm.cuenta.fecha = new Date();
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;

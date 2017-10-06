@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
             <label data-translate="dentalApp.procedimiento.paciente" for="field_paciente">Paciente</label>
-            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.procedimiento.paciente" ng-options="paciente as paciente.id for paciente in vm.pacientes track by paciente.id" required>
+            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.procedimiento.paciente" ng-options="paciente as (paciente.nombres+' '+paciente.apellidos) for paciente in vm.pacientes track by paciente.id" required>
             </select>
         </div>
         <div ng-show="editForm.paciente.$invalid">

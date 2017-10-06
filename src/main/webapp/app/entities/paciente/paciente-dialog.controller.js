@@ -11,7 +11,8 @@
         var vm = this;
 
         vm.paciente = entity;
-        vm.paciente.fecha = new Date();
+        if (vm.paciente.fecha === null || vm.paciente.fecha == undefined)
+            vm.paciente.fecha = new Date();
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
