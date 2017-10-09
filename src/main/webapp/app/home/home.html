@@ -1,19 +1,37 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
             <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome, Dental!</h1>
+        </div>-->
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <h1 data-translate="home.title">Welcome to Dental!</h1>
             <p class="lead" data-translate="home.subtitle">This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                <!--<div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
-                </div>
+                </div>-->
 
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                <div ng-switch-when="true" has-authority="ROLE_ADMIN">
+                    <p data-translate="home.enlaces">
+                        Algunos accesos directos:
+                    </p>
+
+                    <div class="btn-cuadro" role="group">
+                        <button class="btn btn-primary" ui-sref="paciente">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span data-translate="home.botones.paciente">ver Pacientes</span>
+                        </button>
+                        <button class="btn btn-primary" ui-sref="procedimiento">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <span data-translate="home.botones.procedimiento">Ver procedimientos</span>
+                        </button>
+
+                        <button class="btn btn-primary" ui-sref="cuenta">
+                            <span class="glyphicon glyphicon-usd"></span>
+                            <span data-translate="home.botones.cuenta">Ver cuentas</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
@@ -21,17 +39,24 @@
                 </div>
             </div>
 
-            <p data-translate="home.enlaces">
+            <!--<p data-translate="home.enlaces">
                 Algunos accesos directos:
             </p>
 
             <ul>
-                <li><a href="http://www.jhipster.tech/" target="_blank" rel="noopener" data-translate="home.link.homepage">JHipster homepage</a></li>
+                <li>
+                    <button class="btn btn-primary" ui-sref="paciente.new" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span  data-translate="dentalApp.paciente.home.createLabel">
+                        Create new Paciente
+                    </span>
+                    </button>
+                    &lt;!&ndash;<a href="http://www.jhipster.tech/" target="_blank" rel="noopener" data-translate="home.link.homepage">JHipster homepage</a></li>&ndash;&gt;
                 <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
                 <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>
                 <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.link.chat">JHipster public chat room</a></li>
                 <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener" data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-            </ul>
+            </ul>-->
 
             <!--<p>-->
              <!--<span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.github">GitHub</a>!-->

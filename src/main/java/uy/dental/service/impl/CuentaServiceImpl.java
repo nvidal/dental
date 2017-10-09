@@ -1,5 +1,6 @@
 package uy.dental.service.impl;
 
+import uy.dental.domain.Paciente;
 import uy.dental.service.CuentaService;
 import uy.dental.domain.Cuenta;
 import uy.dental.repository.CuentaRepository;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 /**
@@ -73,5 +76,24 @@ public class CuentaServiceImpl implements CuentaService{
     public void delete(Long id) {
         log.debug("Request to delete Cuenta : {}", id);
         cuentaRepository.delete(id);
+    }
+
+
+    /**
+     *  Devuelve el saldo del paciente "idPaciente".
+     *  Saldo = SUM(haber) - SUM(debe)
+     *
+     *  @param idPaciente the id of the Paciente
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Float getSaldoPaciente(Long idPaciente) {
+        log.debug("Request to get Cuentas byPaciente "+idPaciente);
+        List<Cuenta> cuentas = cuentaRepository.findByPaciente_Id(idPaciente);
+        Float saldo = 0F;
+        for(Cuenta cuenta : cuentas){
+            saldo += cuenta.getHaber() - cuenta.getDebe();
+        }
+        return saldo;
     }
 }

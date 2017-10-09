@@ -39,4 +39,13 @@ public interface CuentaService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+
+    /**
+     *  Devuelve el saldo del paciente "idPaciente".
+     *  Saldo = SUM(haber) - SUM(debe)
+     *
+     *  @param idPaciente the id of the Paciente
+     */
+    Float getSaldoPaciente(Long idPaciente);
 }

@@ -1,12 +1,17 @@
 {
     "home": {
-        "title": "¡Bienvenido, Dental!",
+        "title": "¡Bienvenido a Dental!",
         "subtitle": "Gestión de Consultorio Odontológico",
         "logged": {
             "message": "Está conectado como \"{{username}}\"."
         },
         "question": "Si tiene preguntas sobre JHipster:",
-        "enlaces": "Algunos accesos directos:",
+        "enlaces": "Accesos directos:",
+        "botones": {
+            "paciente" : "Ver Pacientes",
+            "procedimiento" : "Ver Procedimientos",
+            "cuenta" : "Ver Cuentas"
+        },
         "link": {
             "homepage": "Página de inicio de JHipster",
             "stackoverflow": "JHipster en Stack Overflow",

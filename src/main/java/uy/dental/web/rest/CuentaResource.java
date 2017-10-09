@@ -124,4 +124,18 @@ public class CuentaResource {
         cuentaService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * GET  /cuentas/saldo/:id : devuelve el saldo del paciente .
+     *
+     * @param id del paciente
+     * @return the ResponseEntity with status 200 (OK) and with body the saldo, or with status 404 (Not Found)
+     */
+    @GetMapping("/cuentas/saldo/{id}")
+    @Timed
+    public ResponseEntity<Float> getSaldoPaciente(@PathVariable Long id) {
+        log.debug("REST request to get Cuenta : {}", id);
+        Float saldo = cuentaService.getSaldoPaciente(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(saldo));
+    }
 }

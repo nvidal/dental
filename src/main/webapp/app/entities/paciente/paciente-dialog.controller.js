@@ -5,9 +5,9 @@
         .module('dentalApp')
         .controller('PacienteDialogController', PacienteDialogController);
 
-    PacienteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Paciente', 'Procedimiento', 'Saldo'];
+    PacienteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Paciente', 'Procedimiento'];
 
-    function PacienteDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Paciente, Procedimiento, Saldo) {
+    function PacienteDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Paciente, Procedimiento) {
         var vm = this;
 
         vm.paciente = entity;
@@ -18,7 +18,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.procedimientos = Procedimiento.query();
-        vm.saldos = Saldo.query();
+        //vm.saldos = Saldo.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
