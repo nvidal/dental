@@ -20,6 +20,7 @@
             "fecha": "Fecha",
             "nombres": "Nombres",
             "apellidos": "Apellidos",
+            "cedula": "Cedula",
             "telefono": "Telefono",
             "celular": "Celular",
             "direccion": "Direccion",
@@ -32,7 +33,7 @@
             "cardiaca": "Enfermedades cardíacas",
             "farmacos": "Fármacos que toma: anticoagulantes?",
             "procedimientos": "Procedimientos",
-            "saldos": "Saldos"
+            "cuentas": "Cuentas"
         }
     }
 }

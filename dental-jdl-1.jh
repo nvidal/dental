@@ -3,6 +3,7 @@ entity Paciente {
     fecha LocalDate,
     nombres String required,
     apellidos String required,
+    cedula String required,
     telefono String,
     celular String,
     direccion String,
@@ -17,10 +18,15 @@ entity Paciente {
     farmacos String
 }
 
-entity Procedimiento{
+entity Diagnostico{
     fecha LocalDate required,
-    //pieza Pieza,
-    procedimiento String required
+    descripcion String required,
+}
+
+entity Tratamiento{
+    fecha LocalDate required,
+    procedimiento String required,
+    precio Float
 }
 
 entity Pieza{
@@ -37,12 +43,14 @@ entity Cuenta {
 }
 
 relationship OneToMany {
-    Paciente{procedimientos} to Procedimiento{paciente required},
-    Paciente{cuentas} to Cuenta{paciente required} 
+    Paciente{tratamientos} to Tratamiento{paciente required},
+    Paciente{cuentas} to Cuenta{paciente required}
+    Paciente{diagnosticos} to Diagnostico{paciente required}
 }
 
 relationship ManyToOne {
-  Procedimiento{pieza} to Pieza
+  Tratamiento{pieza} to Pieza,
+  Diagnostico{pieza} to Pieza
 }
 
 

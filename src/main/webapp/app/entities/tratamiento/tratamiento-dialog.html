@@ -1,0 +1,76 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTratamientoLabel" data-translate="dentalApp.tratamiento.home.createOrEditLabel">Create or edit a Tratamiento</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.tratamiento.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.tratamiento.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.tratamiento.fecha" for="field_fecha">Fecha</label>
+                <div class="input-group">
+                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tratamiento.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.fecha.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label data-translate="dentalApp.tratamiento.pieza" for="field_pieza">Pieza</label>
+            <select class="form-control" id="field_pieza" name="pieza" ng-model="vm.tratamiento.pieza" ng-options="pieza as pieza.numeroPieza+' ('+pieza.nombre+')' for pieza in vm.piezas track by pieza.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.tratamiento.procedimiento" for="field_procedimiento">Procedimiento</label>
+            <input type="text" class="form-control" name="procedimiento" id="field_procedimiento"
+                    ng-model="vm.tratamiento.procedimiento"
+                    required/>
+            <div ng-show="editForm.procedimiento.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.procedimiento.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.tratamiento.precio" for="field_precio">Precio</label>
+            <input type="number" class="form-control" name="precio" id="field_precio"
+                    ng-model="vm.tratamiento.precio"
+                    />
+        </div>
+        <div class="form-group">
+            <label data-translate="dentalApp.tratamiento.paciente" for="field_paciente">Paciente</label>
+            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.tratamiento.paciente" ng-options="paciente as paciente.nombres+' '+paciente.apellidos for paciente in vm.pacientes track by paciente.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.paciente.$invalid">
+            <p class="help-block"
+                ng-show="editForm.paciente.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="dentalApp.tratamiento.home.title">Tratamientos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="tratamiento.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="dentalApp.tratamiento.home.createLabel">
+                        Create new Tratamiento
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="pieza.numeroPieza"><span data-translate="dentalApp.tratamiento.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fecha"><span data-translate="dentalApp.tratamiento.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="procedimiento"><span data-translate="dentalApp.tratamiento.procedimiento">Procedimiento</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="precio"><span data-translate="dentalApp.tratamiento.precio">Precio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paciente.id"><span data-translate="dentalApp.tratamiento.paciente">Paciente</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tratamiento in vm.tratamientos track by tratamiento.id">
+                    <!--<td><a ui-sref="tratamiento-detail({id:tratamiento.id})">{{tratamiento.id}}</a></td>-->
+                    <td>
+                        <a ui-sref="pieza-detail({id:tratamiento.pieza.id})">{{tratamiento.pieza.numeroPieza}} ({{tratamiento.pieza.nombre}})</a>
+                    </td>
+                    <td>{{tratamiento.fecha | date:'mediumDate'}}</td>
+                    <td>{{tratamiento.procedimiento}}</td>
+                    <td>{{tratamiento.precio | currency: '$'}}</td>
+                    <td>
+                        <a ui-sref="paciente-detail({id:tratamiento.paciente.id})">{{tratamiento.paciente.nombres}} {{tratamiento.paciente.apellidos}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="tratamiento-detail({id:tratamiento.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="tratamiento.edit({id:tratamiento.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="tratamiento.delete({id:tratamiento.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

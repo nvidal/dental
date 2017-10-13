@@ -52,6 +52,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.paciente.cedula" for="field_cedula">Cedula</label>
+            <input type="text" class="form-control" name="cedula" id="field_cedula"
+                   ng-model="vm.paciente.cedula"
+                   required/>
+            <div ng-show="editForm.cedula.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.cedula.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="dentalApp.paciente.telefono" for="field_telefono">Telefono</label>
             <input type="text" class="form-control" name="telefono" id="field_telefono"
                     ng-model="vm.paciente.telefono"

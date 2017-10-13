@@ -127,6 +127,7 @@
                                 fecha: null,
                                 nombres: null,
                                 apellidos: null,
+                                cedula: null,
                                 telefono: null,
                                 celular: null,
                                 direccion: null,

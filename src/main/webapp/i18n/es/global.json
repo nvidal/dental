@@ -11,6 +11,9 @@
                 "procedimiento": "Procedimientos",
                 "pieza": "Piezas",
                 "cuenta": "Cuentas",
+                "presupuesto": "Presupuestos",
+                "diagnostico": "Diagnostico",
+                "tratamiento": "Tratamiento",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

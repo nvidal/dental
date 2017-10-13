@@ -38,6 +38,10 @@ public class Paciente implements Serializable {
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
 
+    @NotNull
+    @Column(name = "cedula", nullable = false)
+    private String cedula;
+
     @Column(name = "telefono")
     private String telefono;
 
@@ -74,12 +78,17 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Procedimiento> procedimientos = new HashSet<>();
+    private Set<Tratamiento> tratamientos = new HashSet<>();
 
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Cuenta> cuentas = new HashSet<>();
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Diagnostico> diagnosticos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -127,6 +136,19 @@ public class Paciente implements Serializable {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public Paciente cedula(String cedula) {
+        this.cedula = cedula;
+        return this;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getTelefono() {
@@ -272,29 +294,29 @@ public class Paciente implements Serializable {
         this.farmacos = farmacos;
     }
 
-    public Set<Procedimiento> getProcedimientos() {
-        return procedimientos;
+    public Set<Tratamiento> getTratamientos() {
+        return tratamientos;
     }
 
-    public Paciente procedimientos(Set<Procedimiento> procedimientos) {
-        this.procedimientos = procedimientos;
+    public Paciente tratamientos(Set<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
         return this;
     }
 
-    public Paciente addProcedimientos(Procedimiento procedimiento) {
-        this.procedimientos.add(procedimiento);
-        procedimiento.setPaciente(this);
+    public Paciente addTratamientos(Tratamiento tratamiento) {
+        this.tratamientos.add(tratamiento);
+        tratamiento.setPaciente(this);
         return this;
     }
 
-    public Paciente removeProcedimientos(Procedimiento procedimiento) {
-        this.procedimientos.remove(procedimiento);
-        procedimiento.setPaciente(null);
+    public Paciente removeTratamientos(Tratamiento tratamiento) {
+        this.tratamientos.remove(tratamiento);
+        tratamiento.setPaciente(null);
         return this;
     }
 
-    public void setProcedimientos(Set<Procedimiento> procedimientos) {
-        this.procedimientos = procedimientos;
+    public void setTratamientos(Set<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
     }
 
     public Set<Cuenta> getCuentas() {
@@ -320,6 +342,31 @@ public class Paciente implements Serializable {
 
     public void setCuentas(Set<Cuenta> cuentas) {
         this.cuentas = cuentas;
+    }
+
+    public Set<Diagnostico> getDiagnosticos() {
+        return diagnosticos;
+    }
+
+    public Paciente diagnosticos(Set<Diagnostico> diagnosticos) {
+        this.diagnosticos = diagnosticos;
+        return this;
+    }
+
+    public Paciente addDiagnosticos(Diagnostico diagnostico) {
+        this.diagnosticos.add(diagnostico);
+        diagnostico.setPaciente(this);
+        return this;
+    }
+
+    public Paciente removeDiagnosticos(Diagnostico diagnostico) {
+        this.diagnosticos.remove(diagnostico);
+        diagnostico.setPaciente(null);
+        return this;
+    }
+
+    public void setDiagnosticos(Set<Diagnostico> diagnosticos) {
+        this.diagnosticos = diagnosticos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -350,6 +397,7 @@ public class Paciente implements Serializable {
             ", fecha='" + getFecha() + "'" +
             ", nombres='" + getNombres() + "'" +
             ", apellidos='" + getApellidos() + "'" +
+            ", cedula='" + getCedula() + "'" +
             ", telefono='" + getTelefono() + "'" +
             ", celular='" + getCelular() + "'" +
             ", direccion='" + getDireccion() + "'" +

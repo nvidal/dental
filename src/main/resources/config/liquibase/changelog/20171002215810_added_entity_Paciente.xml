@@ -33,6 +33,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="cedula" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="telefono" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

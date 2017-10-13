@@ -5,9 +5,9 @@
         .module('dentalApp')
         .controller('PacienteDetailController', PacienteDetailController);
 
-    PacienteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Paciente', 'Procedimiento', 'Cuenta'];
+    PacienteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Paciente', 'Tratamiento', 'Cuenta', 'Diagnostico'];
 
-    function PacienteDetailController($scope, $rootScope, $stateParams, previousState, entity, Paciente, Procedimiento, Cuenta) {
+    function PacienteDetailController($scope, $rootScope, $stateParams, previousState, entity, Paciente, Tratamiento, Cuenta, Diagnostico) {
         var vm = this;
 
         vm.paciente = entity;

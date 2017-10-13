@@ -49,6 +49,9 @@ public class PacienteResourceIntTest {
     private static final String DEFAULT_APELLIDOS = "AAAAAAAAAA";
     private static final String UPDATED_APELLIDOS = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CEDULA = "AAAAAAAAAA";
+    private static final String UPDATED_CEDULA = "BBBBBBBBBB";
+
     private static final String DEFAULT_TELEFONO = "AAAAAAAAAA";
     private static final String UPDATED_TELEFONO = "BBBBBBBBBB";
 
@@ -125,6 +128,7 @@ public class PacienteResourceIntTest {
             .fecha(DEFAULT_FECHA)
             .nombres(DEFAULT_NOMBRES)
             .apellidos(DEFAULT_APELLIDOS)
+            .cedula(DEFAULT_CEDULA)
             .telefono(DEFAULT_TELEFONO)
             .celular(DEFAULT_CELULAR)
             .direccion(DEFAULT_DIRECCION)
@@ -162,6 +166,7 @@ public class PacienteResourceIntTest {
         assertThat(testPaciente.getFecha()).isEqualTo(DEFAULT_FECHA);
         assertThat(testPaciente.getNombres()).isEqualTo(DEFAULT_NOMBRES);
         assertThat(testPaciente.getApellidos()).isEqualTo(DEFAULT_APELLIDOS);
+        assertThat(testPaciente.getCedula()).isEqualTo(DEFAULT_CEDULA);
         assertThat(testPaciente.getTelefono()).isEqualTo(DEFAULT_TELEFONO);
         assertThat(testPaciente.getCelular()).isEqualTo(DEFAULT_CELULAR);
         assertThat(testPaciente.getDireccion()).isEqualTo(DEFAULT_DIRECCION);
@@ -232,6 +237,24 @@ public class PacienteResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCedulaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = pacienteRepository.findAll().size();
+        // set the field null
+        paciente.setCedula(null);
+
+        // Create the Paciente, which fails.
+
+        restPacienteMockMvc.perform(post("/api/pacientes")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(paciente)))
+            .andExpect(status().isBadRequest());
+
+        List<Paciente> pacienteList = pacienteRepository.findAll();
+        assertThat(pacienteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPacientes() throws Exception {
         // Initialize the database
         pacienteRepository.saveAndFlush(paciente);
@@ -244,6 +267,7 @@ public class PacienteResourceIntTest {
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
             .andExpect(jsonPath("$.[*].nombres").value(hasItem(DEFAULT_NOMBRES.toString())))
             .andExpect(jsonPath("$.[*].apellidos").value(hasItem(DEFAULT_APELLIDOS.toString())))
+            .andExpect(jsonPath("$.[*].cedula").value(hasItem(DEFAULT_CEDULA.toString())))
             .andExpect(jsonPath("$.[*].telefono").value(hasItem(DEFAULT_TELEFONO.toString())))
             .andExpect(jsonPath("$.[*].celular").value(hasItem(DEFAULT_CELULAR.toString())))
             .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION.toString())))
@@ -271,6 +295,7 @@ public class PacienteResourceIntTest {
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
             .andExpect(jsonPath("$.nombres").value(DEFAULT_NOMBRES.toString()))
             .andExpect(jsonPath("$.apellidos").value(DEFAULT_APELLIDOS.toString()))
+            .andExpect(jsonPath("$.cedula").value(DEFAULT_CEDULA.toString()))
             .andExpect(jsonPath("$.telefono").value(DEFAULT_TELEFONO.toString()))
             .andExpect(jsonPath("$.celular").value(DEFAULT_CELULAR.toString()))
             .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION.toString()))
@@ -306,6 +331,7 @@ public class PacienteResourceIntTest {
             .fecha(UPDATED_FECHA)
             .nombres(UPDATED_NOMBRES)
             .apellidos(UPDATED_APELLIDOS)
+            .cedula(UPDATED_CEDULA)
             .telefono(UPDATED_TELEFONO)
             .celular(UPDATED_CELULAR)
             .direccion(UPDATED_DIRECCION)
@@ -330,6 +356,7 @@ public class PacienteResourceIntTest {
         assertThat(testPaciente.getFecha()).isEqualTo(UPDATED_FECHA);
         assertThat(testPaciente.getNombres()).isEqualTo(UPDATED_NOMBRES);
         assertThat(testPaciente.getApellidos()).isEqualTo(UPDATED_APELLIDOS);
+        assertThat(testPaciente.getCedula()).isEqualTo(UPDATED_CEDULA);
         assertThat(testPaciente.getTelefono()).isEqualTo(UPDATED_TELEFONO);
         assertThat(testPaciente.getCelular()).isEqualTo(UPDATED_CELULAR);
         assertThat(testPaciente.getDireccion()).isEqualTo(UPDATED_DIRECCION);

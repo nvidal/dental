@@ -3,14 +3,20 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "procedimientos",
-            "otherEntityName": "procedimiento",
+            "relationshipName": "tratamientos",
+            "otherEntityName": "tratamiento",
             "otherEntityRelationshipName": "paciente"
         },
         {
             "relationshipType": "one-to-many",
             "relationshipName": "cuentas",
             "otherEntityName": "cuenta",
+            "otherEntityRelationshipName": "paciente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "diagnosticos",
+            "otherEntityName": "diagnostico",
             "otherEntityRelationshipName": "paciente"
         }
     ],
@@ -28,6 +34,13 @@
         },
         {
             "fieldName": "apellidos",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cedula",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

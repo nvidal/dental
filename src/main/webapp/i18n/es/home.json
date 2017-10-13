@@ -9,7 +9,8 @@
         "enlaces": "Accesos directos:",
         "botones": {
             "paciente" : "Ver Pacientes",
-            "procedimiento" : "Ver Procedimientos",
+            "tratamiento" : "Ver Tratamientos",
+            "diagnostico" : "Ver Diagnostico",
             "cuenta" : "Ver Cuentas"
         },
         "link": {
