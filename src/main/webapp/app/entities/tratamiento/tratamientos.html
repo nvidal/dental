@@ -18,8 +18,8 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="pieza.numeroPieza"><span data-translate="dentalApp.tratamiento.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span data-translate="dentalApp.tratamiento.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pieza.numeroPieza"><span data-translate="dentalApp.tratamiento.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="procedimiento"><span data-translate="dentalApp.tratamiento.procedimiento">Procedimiento</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="precio"><span data-translate="dentalApp.tratamiento.precio">Precio</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="paciente.id"><span data-translate="dentalApp.tratamiento.paciente">Paciente</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -29,10 +29,10 @@
             <tbody>
                 <tr ng-repeat="tratamiento in vm.tratamientos track by tratamiento.id">
                     <!--<td><a ui-sref="tratamiento-detail({id:tratamiento.id})">{{tratamiento.id}}</a></td>-->
+                    <td>{{tratamiento.fecha | date:'mediumDate'}}</td>
                     <td>
                         <a ui-sref="pieza-detail({id:tratamiento.pieza.id})">{{tratamiento.pieza.numeroPieza}} ({{tratamiento.pieza.nombre}})</a>
                     </td>
-                    <td>{{tratamiento.fecha | date:'mediumDate'}}</td>
                     <td>{{tratamiento.procedimiento}}</td>
                     <td>{{tratamiento.precio | currency: '$'}}</td>
                     <td>

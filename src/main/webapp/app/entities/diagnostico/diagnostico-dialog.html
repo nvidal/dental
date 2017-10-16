@@ -30,6 +30,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label data-translate="dentalApp.diagnostico.pieza" for="field_pieza">Pieza</label>
+            <select class="form-control" id="field_pieza" name="pieza" ng-model="vm.diagnostico.pieza" ng-options="pieza as pieza.numeroPieza+' ('+pieza.nombre+')' for pieza in vm.piezas track by pieza.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="dentalApp.diagnostico.descripcion" for="field_descripcion">Descripcion</label>
             <input type="text" class="form-control" name="descripcion" id="field_descripcion"
                     ng-model="vm.diagnostico.descripcion"
@@ -41,16 +47,9 @@
                 </p>
             </div>
         </div>
-
-        <div class="form-group">
-            <label data-translate="dentalApp.diagnostico.pieza" for="field_pieza">Pieza</label>
-            <select class="form-control" id="field_pieza" name="pieza" ng-model="vm.diagnostico.pieza" ng-options="pieza as pieza.id for pieza in vm.piezas track by pieza.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
+        <div class="form-group" ng-show="vm.mostrarPaciente">
             <label data-translate="dentalApp.diagnostico.paciente" for="field_paciente">Paciente</label>
-            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.diagnostico.paciente" ng-options="paciente as paciente.id for paciente in vm.pacientes track by paciente.id" required>
+            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.diagnostico.paciente" ng-options="paciente as paciente.nombres+' '+paciente.apellidos for paciente in vm.pacientes track by paciente.id" required>
             </select>
         </div>
         <div ng-show="editForm.paciente.$invalid">

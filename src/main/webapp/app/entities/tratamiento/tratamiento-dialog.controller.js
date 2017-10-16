@@ -5,14 +5,20 @@
         .module('dentalApp')
         .controller('TratamientoDialogController', TratamientoDialogController);
 
-    TratamientoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Tratamiento', 'Pieza', 'Paciente'];
+    TratamientoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'paciente','Tratamiento', 'Pieza', 'Paciente'];
 
-    function TratamientoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Tratamiento, Pieza, Paciente) {
+    function TratamientoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, paciente, Tratamiento, Pieza, Paciente) {
         var vm = this;
 
         vm.tratamiento = entity;
+        vm.mostrarPaciente = true;
         if (vm.tratamiento.fecha === null || vm.tratamiento.fecha == undefined)
             vm.tratamiento.fecha = new Date();
+
+        if (paciente != null) {
+            vm.tratamiento.paciente = paciente;
+            vm.mostrarPaciente = false;
+        }
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;

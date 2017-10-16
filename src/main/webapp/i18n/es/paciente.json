@@ -8,6 +8,11 @@
                 "anteMedicosLabel": "Antecedentes médicos",
                 "personalesLabel" : "Datos personales"
             },
+            "action": {
+                "edit": "Editar datos",
+                "tratamiento": "Tratamiento",
+                "diagnostico": "Diagnostico"
+            },
             "created": "Un nuevo Paciente ha sido creado con el identificador {{ param }}",
             "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Paciente ha sido eliminado con el identificador {{ param }}",

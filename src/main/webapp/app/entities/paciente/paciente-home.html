@@ -1,0 +1,140 @@
+<div>
+    <div class="text-center">
+        <h2>{{vm.paciente.nombres}} {{vm.paciente.apellidos}} ({{vm.paciente.cedula}}) </h2>
+        <hr>
+    </div>
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row flex-btn-group-container">
+        <div class="col-md-3 col-xs-6 ">
+            <div class="panel" ng-class="'panel-default'">
+                <div class="panel-body">
+                    Ultima visita: 27/09/2017
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <div class="panel" ng-class="'panel-danger'">
+                <div class="panel-body">
+                    Saldo: - $6700
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        Datos personales</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+
+                <div class="panel-body">
+                    <dl class="dl-horizontal jh-entity-details">
+                        <!-- Datos Personales -->
+                        <dt><span data-translate="dentalApp.paciente.fecha">Fecha</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.fecha | date:'mediumDate'}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.nombres">Nombres</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.nombres}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.apellidos">Apellidos</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.apellidos}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.cedula">Cedula</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.cedula}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.telefono">Telefono</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.telefono}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.celular">Celular</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.celular}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.direccion">Direccion</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.direccion}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.mail">Mail</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.mail}}</span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse2" href="">
+                        Antecedentes Medicos</a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <dl class="dl-horizontal jh-entity-details">
+                        <!-- Datos Medicos -->
+                        <dt><span data-translate="dentalApp.paciente.alergico">Alergico</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.alergico}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.diabetes">Diabetes</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.diabetes}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.presionAlta">Presion Alta</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.presionAlta}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.tiroides">Tiroides</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.tiroides}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.cicatrizacion">Cicatrizacion</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.cicatrizacion}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.cardiaca">Cardiaca</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.cardiaca}}</span>
+                        </dd>
+                        <dt><span data-translate="dentalApp.paciente.farmacos">Farmacos</span></dt>
+                        <dd>
+                            <span>{{vm.paciente.farmacos}}</span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="paciente-home.edit({id:vm.paciente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.edit"> Edit</span>
+    </button>
+
+    <button type="button" ui-sref="paciente-home.tratamiento({id:vm.paciente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.tratamiento"> Tratamiento</span>
+    </button>
+
+    <button type="button" ui-sref="paciente-home.diagnostico({id:vm.paciente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.diagnostico"> Diagnostico</span>
+    </button>
+</div>

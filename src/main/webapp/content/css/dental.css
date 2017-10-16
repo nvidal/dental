@@ -15,7 +15,7 @@
 .btn-cuadro > .btn {
     /*display: block;*/
     float: none;
-    width: 100%;
+    /*width: 100%;*/
     max-width: 100%;
     margin: 5px;
 }

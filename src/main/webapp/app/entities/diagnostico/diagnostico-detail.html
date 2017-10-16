@@ -8,17 +8,17 @@
         <dd>
             <span>{{vm.diagnostico.fecha | date:'mediumDate'}}</span>
         </dd>
+        <dt><span data-translate="dentalApp.diagnostico.pieza">Pieza</span></dt>
+        <dd>
+            <a ui-sref="pieza-detail({id:vm.diagnostico.pieza.id})">{{vm.diagnostico.pieza.numeroPieza}} ({{vm.diagnostico.pieza.nombre}})</a>
+        </dd>
         <dt><span data-translate="dentalApp.diagnostico.descripcion">Descripcion</span></dt>
         <dd>
             <span>{{vm.diagnostico.descripcion}}</span>
         </dd>
-        <dt><span data-translate="dentalApp.diagnostico.pieza">Pieza</span></dt>
-        <dd>
-            <a ui-sref="pieza-detail({id:vm.diagnostico.pieza.id})">{{vm.diagnostico.pieza.id}}</a>
-        </dd>
         <dt><span data-translate="dentalApp.diagnostico.paciente">Paciente</span></dt>
         <dd>
-            <a ui-sref="paciente-detail({id:vm.diagnostico.paciente.id})">{{vm.diagnostico.paciente.id}}</a>
+            <a ui-sref="paciente-detail({id:vm.diagnostico.paciente.id})">{{vm.diagnostico.paciente.nombres}} {{vm.diagnostico.paciente.apellidos}}</a>
         </dd>
     </dl>
 

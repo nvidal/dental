@@ -1,6 +1,7 @@
 {
     "home": {
         "title": "¡Bienvenido a Dental!",
+        "title-login" : "Listado de pacientes",
         "subtitle": "Gestión de Consultorio Odontológico",
         "logged": {
             "message": "Está conectado como \"{{username}}\"."
@@ -21,6 +22,15 @@
             "follow": "contacto @java_hipster en Twitter"
         },
         "like": "Si te gusta JHipster, danos una estrella en",
-        "github": "GitHub"
+        "github": "GitHub",
+        "paciente": {
+            "nombres": "Nombres",
+            "apellidos": "Apellidos",
+            "cedula": "Cedula",
+            "telefono": "Telefono",
+            "celular": "Celular",
+            "mail": "Mail",
+            "saldo": "Saldo"
+        }
     }
 }

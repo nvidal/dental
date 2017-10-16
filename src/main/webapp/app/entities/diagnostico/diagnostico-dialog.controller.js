@@ -5,12 +5,20 @@
         .module('dentalApp')
         .controller('DiagnosticoDialogController', DiagnosticoDialogController);
 
-    DiagnosticoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Diagnostico', 'Pieza', 'Paciente'];
+    DiagnosticoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'paciente', 'Diagnostico', 'Pieza', 'Paciente'];
 
-    function DiagnosticoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Diagnostico, Pieza, Paciente) {
+    function DiagnosticoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, paciente, Diagnostico, Pieza, Paciente) {
         var vm = this;
 
+        vm.mostrarPaciente = true;
         vm.diagnostico = entity;
+        if (vm.diagnostico.fecha === null || vm.diagnostico.fecha == undefined)
+            vm.diagnostico.fecha = new Date();
+        //Me fijo si viene el paciente cargado
+        if (paciente != null) {
+            vm.diagnostico.paciente = paciente;
+            vm.mostrarPaciente = false;
+        }
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;

@@ -198,6 +198,129 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('paciente-home', {
+            parent: 'paciente',
+            url: '/home/{id}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'dentalApp.paciente.home.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/paciente/paciente-home.html',
+                    controller: 'PacienteHomeController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('paciente');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Paciente', function($stateParams, Paciente) {
+                    return Paciente.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'paciente',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
+        .state('paciente-home.edit', {
+            parent: 'paciente-home',
+            url: '/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/paciente/paciente-dialog.html',
+                    controller: 'PacienteDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Paciente', function(Paciente) {
+                            return Paciente.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('paciente-home', null, { reload: 'paciente-home' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('paciente-home.tratamiento', {
+            parent: 'paciente-home',
+            url: '',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/tratamiento/tratamiento-dialog.html',
+                    controller: 'TratamientoDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                fecha: null,
+                                procedimiento: null,
+                                precio: null,
+                                id: null,
+                                paciente : null
+                            };
+                        },
+                        paciente : ['Paciente', function (Paciente) {
+                            return Paciente.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('paciente-home', null, { reload: 'paciente-home' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('paciente-home.diagnostico', {
+            parent: 'paciente-home',
+            url: '',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/diagnostico/diagnostico-dialog.html',
+                    controller: 'DiagnosticoDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                fecha: null,
+                                descripcion: null,
+                                id: null
+                            };
+                        },
+                        paciente : ['Paciente', function (Paciente) {
+                            return Paciente.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('paciente-home', null, { reload: 'paciente-home' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 

@@ -99,7 +99,8 @@
                     resolve: {
                         entity: ['Tratamiento', function(Tratamiento) {
                             return Tratamiento.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        paciente: null
                     }
                 }).result.then(function() {
                     $state.go('^', {}, { reload: false });
@@ -129,7 +130,8 @@
                                 precio: null,
                                 id: null
                             };
-                        }
+                        },
+                        paciente: null
                     }
                 }).result.then(function() {
                     $state.go('tratamiento', null, { reload: 'tratamiento' });
@@ -154,7 +156,8 @@
                     resolve: {
                         entity: ['Tratamiento', function(Tratamiento) {
                             return Tratamiento.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        paciente : null
                     }
                 }).result.then(function() {
                     $state.go('tratamiento', null, { reload: 'tratamiento' });

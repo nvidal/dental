@@ -21,7 +21,7 @@
                     <!--<th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <!--<th jh-sort-by="fecha"><span data-translate="dentalApp.paciente.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="nombres"><span data-translate="dentalApp.paciente.nombres">Nombres</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="apellidos"><span data-translate="dentalApp.paciente.apellidos">Apellidos</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="apellidos"><span data-translate="dentalApp.paciente.apellidos">Apellidos</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="cedula"><span data-translate="dentalApp.paciente.cedula">Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="telefono"><span data-translate="dentalApp.paciente.telefono">Telefono</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="celular"><span data-translate="dentalApp.paciente.celular">Celular</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -41,20 +41,12 @@
                 <tr ng-repeat="paciente in vm.pacientes track by paciente.id">
                     <!--<td><a ui-sref="paciente-detail({id:paciente.id})">{{paciente.id}}</a></td>
                     <td>{{paciente.fecha | date:'mediumDate'}}</td>-->
-                    <td>{{paciente.nombres}}</td>
-                    <td>{{paciente.apellidos}}</td>
+                    <td><a ui-sref="paciente-detail({id:paciente.id})">{{paciente.nombres}} {{paciente.apellidos}}</a></td>
                     <td>{{paciente.cedula}}</td>
                     <td>{{paciente.telefono}}</td>
                     <td>{{paciente.celular}}</td>
                     <!--<td>{{paciente.direccion}}</td>-->
                     <td>{{paciente.mail}}</td>
-                    <!--<td>{{paciente.alergico}}</td>
-                    <td>{{paciente.diabetes}}</td>
-                    <td>{{paciente.presionAlta}}</td>
-                    <td>{{paciente.tiroides}}</td>
-                    <td>{{paciente.cicatrizacion}}</td>
-                    <td>{{paciente.cardiaca}}</td>
-                    <td>{{paciente.farmacos}}</td>-->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

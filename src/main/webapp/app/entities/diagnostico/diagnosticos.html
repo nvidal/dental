@@ -18,24 +18,22 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span data-translate="dentalApp.diagnostico.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pieza.numeroPieza"><span data-translate="dentalApp.diagnostico.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span data-translate="dentalApp.diagnostico.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="pieza.id"><span data-translate="dentalApp.diagnostico.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="paciente.id"><span data-translate="dentalApp.diagnostico.paciente">Paciente</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="diagnostico in vm.diagnosticos track by diagnostico.id">
-                    <td><a ui-sref="diagnostico-detail({id:diagnostico.id})">{{diagnostico.id}}</a></td>
-                        <td>{{diagnostico.fecha | date:'mediumDate'}}</td>
+                    <td>{{diagnostico.fecha | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="pieza-detail({id:diagnostico.pieza.id})">{{diagnostico.pieza.numeroPieza}} ({{diagnostico.pieza.nombre}})</a>
+                    </td>
                     <td>{{diagnostico.descripcion}}</td>
                     <td>
-                        <a ui-sref="pieza-detail({id:diagnostico.pieza.id})">{{diagnostico.pieza.id}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="paciente-detail({id:diagnostico.paciente.id})">{{diagnostico.paciente.id}}</a>
+                        <a ui-sref="paciente-detail({id:diagnostico.paciente.id})">{{diagnostico.paciente.nombres}} {{diagnostico.paciente.apellidos}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -43,19 +41,16 @@
                                     ui-sref="diagnostico-detail({id:diagnostico.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="diagnostico.edit({id:diagnostico.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="diagnostico.delete({id:diagnostico.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
                             </button>
                         </div>
                     </td>

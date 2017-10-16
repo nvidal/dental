@@ -99,7 +99,8 @@
                     resolve: {
                         entity: ['Diagnostico', function(Diagnostico) {
                             return Diagnostico.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        paciente: null
                     }
                 }).result.then(function() {
                     $state.go('^', {}, { reload: false });
@@ -128,7 +129,8 @@
                                 descripcion: null,
                                 id: null
                             };
-                        }
+                        },
+                        paciente: null
                     }
                 }).result.then(function() {
                     $state.go('diagnostico', null, { reload: 'diagnostico' });
@@ -153,7 +155,8 @@
                     resolve: {
                         entity: ['Diagnostico', function(Diagnostico) {
                             return Diagnostico.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        paciente: null
                     }
                 }).result.then(function() {
                     $state.go('diagnostico', null, { reload: 'diagnostico' });
