@@ -4,6 +4,7 @@
             "home": {
                 "title": "Tratamientos",
                 "createLabel": "Crear nuevo Tratamiento",
+                "editLabel": "Editar Tratamiento",
                 "createOrEditLabel": "Crear o editar Tratamiento"
             },
             "created": "Un nuevo Tratamiento ha sido creado con el identificador {{ param }}",

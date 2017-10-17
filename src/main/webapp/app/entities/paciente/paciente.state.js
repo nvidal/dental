@@ -200,7 +200,7 @@
             }]
         })
         .state('paciente-home', {
-            parent: 'paciente',
+            parent: 'entity',
             url: '/home/{id}',
             data: {
                 authorities: ['ROLE_USER'],
@@ -223,7 +223,7 @@
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'paciente',
+                        name: 'home',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -281,7 +281,11 @@
                         },
                         paciente : ['Paciente', function (Paciente) {
                             return Paciente.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('tratamiento');
+                            return $translate.refresh();
+                        }],
                     }
                 }).result.then(function() {
                     $state.go('paciente-home', null, { reload: 'paciente-home' });
@@ -313,7 +317,48 @@
                         },
                         paciente : ['Paciente', function (Paciente) {
                             return Paciente.get({id : $stateParams.id}).$promise;
-                        }]
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('diagnostico');
+                            return $translate.refresh();
+                        }],
+                    }
+                }).result.then(function() {
+                    $state.go('paciente-home', null, { reload: 'paciente-home' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('paciente-home.pago', {
+            parent: 'paciente-home',
+            url: '',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/pago/pago-dialog.html',
+                    controller: 'PagoDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                fecha: null,
+                                observacion: null,
+                                monto: null,
+                                id: null
+                            };
+                        },
+                        paciente : ['Paciente', function (Paciente) {
+                            return Paciente.get({id : $stateParams.id}).$promise;
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('pago');
+                            return $translate.refresh();
+                        }],
                     }
                 }).result.then(function() {
                     $state.go('paciente-home', null, { reload: 'paciente-home' });

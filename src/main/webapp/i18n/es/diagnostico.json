@@ -4,6 +4,7 @@
             "home": {
                 "title": "Diagnosticos",
                 "createLabel": "Crear nuevo Diagnostico",
+                "editLabel": "Editar Diagnostico",
                 "createOrEditLabel": "Crear o editar Diagnostico"
             },
             "created": "Un nuevo Diagnostico ha sido creado con el identificador {{ param }}",

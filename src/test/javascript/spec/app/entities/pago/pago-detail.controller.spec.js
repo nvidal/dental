@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Paciente Management Detail Controller', function() {
+    describe('Pago Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockPaciente, MockTratamiento, MockPago, MockDiagnostico;
+        var MockEntity, MockPreviousState, MockPago, MockPaciente;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,10 +12,8 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockPaciente = jasmine.createSpy('MockPaciente');
-            MockTratamiento = jasmine.createSpy('MockTratamiento');
             MockPago = jasmine.createSpy('MockPago');
-            MockDiagnostico = jasmine.createSpy('MockDiagnostico');
+            MockPaciente = jasmine.createSpy('MockPaciente');
             
 
             var locals = {
@@ -23,20 +21,18 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Paciente': MockPaciente,
-                'Tratamiento': MockTratamiento,
                 'Pago': MockPago,
-                'Diagnostico': MockDiagnostico
+                'Paciente': MockPaciente
             };
             createController = function() {
-                $injector.get('$controller')("PacienteDetailController", locals);
+                $injector.get('$controller')("PagoDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'dentalApp:pacienteUpdate';
+                var eventType = 'dentalApp:pagoUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

@@ -93,7 +93,7 @@ public class TratamientoResource {
     @Timed
     public ResponseEntity<List<Tratamiento>> getAllTratamientos(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Tratamientos");
-        Page<Tratamiento> page = tratamientoRepository.findAll(pageable);
+        Page<Tratamiento> page = tratamientoRepository.findAllByOrderByFechaDesc(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tratamientos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

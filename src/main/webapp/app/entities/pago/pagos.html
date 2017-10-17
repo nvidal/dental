@@ -1,0 +1,63 @@
+<div>
+    <h2 data-translate="dentalApp.pago.home.title">Pagos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="pago.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="dentalApp.pago.home.createLabel">
+                        Create new Pago
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="fecha"><span data-translate="dentalApp.pago.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="monto"><span data-translate="dentalApp.pago.monto">Monto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observacion"><span data-translate="dentalApp.pago.observacion">Observacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paciente.id"><span data-translate="dentalApp.pago.paciente">Paciente</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pago in vm.pagos track by pago.id">
+                    <td>{{pago.fecha | date:'mediumDate'}}</td>
+                    <td>{{pago.monto | currency:'$'}}</td>
+                    <td>{{pago.observacion}}</td>
+                    <td>
+                        <a ui-sref="paciente-detail({id:pago.paciente.id})">{{pago.paciente.nombres}} {{pago.paciente.apellidos}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="pago-detail({id:pago.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pago.edit({id:pago.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pago.delete({id:pago.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

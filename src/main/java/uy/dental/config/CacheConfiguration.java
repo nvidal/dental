@@ -58,6 +58,8 @@ public class CacheConfiguration {
             cm.createCache(uy.dental.domain.Paciente.class.getName() + ".diagnosticos", jcacheConfiguration);
             cm.createCache(uy.dental.domain.Diagnostico.class.getName(), jcacheConfiguration);
             cm.createCache(uy.dental.domain.Tratamiento.class.getName(), jcacheConfiguration);
+            cm.createCache(uy.dental.domain.Paciente.class.getName() + ".pagos", jcacheConfiguration);
+            cm.createCache(uy.dental.domain.Pago.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

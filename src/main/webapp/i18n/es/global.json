@@ -8,12 +8,10 @@
             "entities": {
                 "main": "Entidades",
                 "paciente": "Pacientes",
-                "procedimiento": "Procedimientos",
                 "pieza": "Piezas",
-                "cuenta": "Cuentas",
-                "presupuesto": "Presupuestos",
-                "diagnostico": "Diagnostico",
-                "tratamiento": "Tratamiento",
+                "diagnostico": "Diagnosticos",
+                "tratamiento": "Tratamientos",
+                "pago": "Pagos",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -22,13 +20,13 @@
                 "password": "Contraseña",
                 "sessions": "Sesiones",
                 "login": "Iniciar sesión",
-                "logout": "Cerrar la sesión",
+                "logout": "Cerrar sesión",
                 "register": "Crear una cuenta"
             },
             "admin": {
                 "main": "Administración",
                 "userManagement": "Gestión de usuarios",
-                "tracker": "Registro de los usuarios",
+                "tracker": "Registro de usuarios",
                 "metrics": "Métricas",
                 "health": "Salud",
                 "configuration": "Configuración",

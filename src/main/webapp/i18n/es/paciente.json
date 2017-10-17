@@ -4,14 +4,20 @@
             "home": {
                 "title": "Pacientes",
                 "createLabel": "Crear nuevo Paciente",
+                "editLabel": "Editar Paciente",
                 "createOrEditLabel": "Crear o editar Paciente",
                 "anteMedicosLabel": "Antecedentes médicos",
-                "personalesLabel" : "Datos personales"
+                "personalesLabel" : "Datos personales",
+                "diagnosticosLabel": "Diagnósticos",
+                "pagosLabel": "Pagos",
+                "tratamientoLabel" : "Tratamientos"
             },
             "action": {
+                "title": "Acciones",
                 "edit": "Editar datos",
                 "tratamiento": "Tratamiento",
-                "diagnostico": "Diagnostico"
+                "diagnostico": "Diagnostico",
+                "pago": "Pago"
             },
             "created": "Un nuevo Paciente ha sido creado con el identificador {{ param }}",
             "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",

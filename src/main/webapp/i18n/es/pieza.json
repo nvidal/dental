@@ -4,6 +4,7 @@
             "home": {
                 "title": "Piezas",
                 "createLabel": "Crear nueva Pieza",
+                "editLabel": "Editar Pieza",
                 "createOrEditLabel": "Crear o editar una Pieza"
             },
             "created": "Una nueva Pieza ha sido creada con el identificador {{ param }}",

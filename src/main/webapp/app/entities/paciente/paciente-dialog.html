@@ -4,7 +4,8 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myPacienteLabel" data-translate="dentalApp.paciente.home.createOrEditLabel">Create or edit a Paciente</h4>
+        <h4 ng-show="vm.paciente.id === null" class="modal-title" id="myPacienteLabel" data-translate="dentalApp.paciente.home.createLabel">Create Paciente</h4>
+        <h4 ng-hide="vm.paciente.id === null" class="modal-title" id="myPacienteLabel" data-translate="dentalApp.paciente.home.editLabel">Edit a Paciente</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>

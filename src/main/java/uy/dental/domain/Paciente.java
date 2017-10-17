@@ -3,6 +3,7 @@ package uy.dental.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,7 +18,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "paciente")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -83,7 +84,7 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Cuenta> cuentas = new HashSet<>();
+    private Set<Pago> pagos = new HashSet<>();
 
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
@@ -319,29 +320,29 @@ public class Paciente implements Serializable {
         this.tratamientos = tratamientos;
     }
 
-    public Set<Cuenta> getCuentas() {
-        return cuentas;
+    public Set<Pago> getPagos() {
+        return pagos;
     }
 
-    public Paciente cuentas(Set<Cuenta> cuentas) {
-        this.cuentas = cuentas;
+    public Paciente pagos(Set<Pago> pagos) {
+        this.pagos = pagos;
         return this;
     }
 
-    public Paciente addCuentas(Cuenta cuenta) {
-        this.cuentas.add(cuenta);
-        cuenta.setPaciente(this);
+    public Paciente addPagos(Pago pago) {
+        this.pagos.add(pago);
+        pago.setPaciente(this);
         return this;
     }
 
-    public Paciente removeCuentas(Cuenta cuenta) {
-        this.cuentas.remove(cuenta);
-        cuenta.setPaciente(null);
+    public Paciente removePagos(Pago pago) {
+        this.pagos.remove(pago);
+        pago.setPaciente(null);
         return this;
     }
 
-    public void setCuentas(Set<Cuenta> cuentas) {
-        this.cuentas = cuentas;
+    public void setPagos(Set<Pago> pagos) {
+        this.pagos = pagos;
     }
 
     public Set<Diagnostico> getDiagnosticos() {
@@ -410,5 +411,29 @@ public class Paciente implements Serializable {
             ", cardiaca='" + getCardiaca() + "'" +
             ", farmacos='" + getFarmacos() + "'" +
             "}";
+    }
+
+    @Formula("(select " +
+        "(select  coalesce(sum(coalesce(p.monto, 0)),0) from Pago p where  p.paciente_id = id) - " +
+        "(select coalesce(sum(coalesce(t.precio, 0)),0) from Tratamiento t where t.paciente_id = id) )")
+    private Float saldo;
+
+    public Float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Float saldo) {
+        this.saldo = saldo;
+    }
+
+    @Formula("(select max(t.fecha) from Tratamiento t where t.paciente_id = id)")
+    private LocalDate ultimaVisita;
+
+    public LocalDate getUltimaVisita() {
+        return ultimaVisita;
+    }
+
+    public void setUltimaVisita(LocalDate ultimaVisita) {
+        this.ultimaVisita = ultimaVisita;
     }
 }
