@@ -366,6 +366,43 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('paciente-home.nota', {
+            parent: 'paciente-home',
+            url: '',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/nota/nota-dialog.html',
+                    controller: 'NotaDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                fecha: null,
+                                comentario: null,
+                                usuario: null,
+                                id: null
+                            };
+                        },
+                        paciente : ['Paciente', function (Paciente) {
+                            return Paciente.get({id : $stateParams.id}).$promise;
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('nota');
+                            return $translate.refresh();
+                        }],
+                    }
+                }).result.then(function() {
+                    $state.go('paciente-home', null, { reload: 'paciente-home' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 

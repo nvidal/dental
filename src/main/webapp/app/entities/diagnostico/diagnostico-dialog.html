@@ -48,6 +48,20 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="dentalApp.diagnostico.estado" for="field_estado">Estado</label>
+            <select class="form-control" name="estado" ng-model="vm.diagnostico.estado" id="field_estado" required>
+                <option value="PENDIENTE" data-translate="dentalApp.EstadoDiagnostico.PENDIENTE">PENDIENTE</option>
+                <option value="REALIZADO" data-translate="dentalApp.EstadoDiagnostico.REALIZADO">REALIZADO</option>
+                <option value="CANCELADO" data-translate="dentalApp.EstadoDiagnostico.CANCELADO">CANCELADO</option>
+            </select>
+            <div ng-show="editForm.estado.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.estado.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
         <div class="form-group" ng-show="vm.mostrarPaciente">
             <label data-translate="dentalApp.diagnostico.paciente" for="field_paciente">Paciente</label>
             <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.diagnostico.paciente" ng-options="paciente as paciente.nombres+' '+paciente.apellidos for paciente in vm.pacientes track by paciente.id" required>

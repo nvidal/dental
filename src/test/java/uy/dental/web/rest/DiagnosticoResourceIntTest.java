@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import uy.dental.domain.enumeration.EstadoDiagnostico;
 /**
  * Test class for the DiagnosticoResource REST controller.
  *
@@ -45,6 +46,9 @@ public class DiagnosticoResourceIntTest {
 
     private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";
+
+    private static final EstadoDiagnostico DEFAULT_ESTADO = EstadoDiagnostico.PENDIENTE;
+    private static final EstadoDiagnostico UPDATED_ESTADO = EstadoDiagnostico.REALIZADO;
 
     @Autowired
     private DiagnosticoRepository diagnosticoRepository;
@@ -84,7 +88,8 @@ public class DiagnosticoResourceIntTest {
     public static Diagnostico createEntity(EntityManager em) {
         Diagnostico diagnostico = new Diagnostico()
             .fecha(DEFAULT_FECHA)
-            .descripcion(DEFAULT_DESCRIPCION);
+            .descripcion(DEFAULT_DESCRIPCION)
+            .estado(DEFAULT_ESTADO);
         // Add required entity
         Paciente paciente = PacienteResourceIntTest.createEntity(em);
         em.persist(paciente);
@@ -115,6 +120,7 @@ public class DiagnosticoResourceIntTest {
         Diagnostico testDiagnostico = diagnosticoList.get(diagnosticoList.size() - 1);
         assertThat(testDiagnostico.getFecha()).isEqualTo(DEFAULT_FECHA);
         assertThat(testDiagnostico.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
+        assertThat(testDiagnostico.getEstado()).isEqualTo(DEFAULT_ESTADO);
     }
 
     @Test
@@ -174,6 +180,24 @@ public class DiagnosticoResourceIntTest {
 
     @Test
     @Transactional
+    public void checkEstadoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = diagnosticoRepository.findAll().size();
+        // set the field null
+        diagnostico.setEstado(null);
+
+        // Create the Diagnostico, which fails.
+
+        restDiagnosticoMockMvc.perform(post("/api/diagnosticos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(diagnostico)))
+            .andExpect(status().isBadRequest());
+
+        List<Diagnostico> diagnosticoList = diagnosticoRepository.findAll();
+        assertThat(diagnosticoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllDiagnosticos() throws Exception {
         // Initialize the database
         diagnosticoRepository.saveAndFlush(diagnostico);
@@ -184,7 +208,8 @@ public class DiagnosticoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(diagnostico.getId().intValue())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
-            .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())));
+            .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
+            .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())));
     }
 
     @Test
@@ -199,7 +224,8 @@ public class DiagnosticoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(diagnostico.getId().intValue()))
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
-            .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()));
+            .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
+            .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()));
     }
 
     @Test
@@ -221,7 +247,8 @@ public class DiagnosticoResourceIntTest {
         Diagnostico updatedDiagnostico = diagnosticoRepository.findOne(diagnostico.getId());
         updatedDiagnostico
             .fecha(UPDATED_FECHA)
-            .descripcion(UPDATED_DESCRIPCION);
+            .descripcion(UPDATED_DESCRIPCION)
+            .estado(UPDATED_ESTADO);
 
         restDiagnosticoMockMvc.perform(put("/api/diagnosticos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -234,6 +261,7 @@ public class DiagnosticoResourceIntTest {
         Diagnostico testDiagnostico = diagnosticoList.get(diagnosticoList.size() - 1);
         assertThat(testDiagnostico.getFecha()).isEqualTo(UPDATED_FECHA);
         assertThat(testDiagnostico.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
+        assertThat(testDiagnostico.getEstado()).isEqualTo(UPDATED_ESTADO);
     }
 
     @Test

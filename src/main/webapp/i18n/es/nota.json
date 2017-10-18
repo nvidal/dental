@@ -1,0 +1,25 @@
+{
+    "dentalApp": {
+        "nota" : {
+            "home": {
+                "title": "Notas",
+                "createLabel": "Crear una Nota",
+                "createOrEditLabel": "Crear o editar Nota",
+                "editLabel": "Editar Nota"
+            },
+            "created": "Un nuevo Nota ha sido creado con el identificador {{ param }}",
+            "updated": "Un Nota ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Nota ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Nota {{ id }}?"
+            },
+            "detail": {
+                "title": "Nota"
+            },
+            "fecha": "Fecha",
+            "comentario": "Comentario",
+            "usuario": "Usuario",
+            "paciente": "Paciente"
+        }
+    }
+}

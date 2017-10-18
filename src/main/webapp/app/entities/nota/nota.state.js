@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('diagnostico', {
+        .state('nota', {
             parent: 'entity',
-            url: '/diagnostico?page&sort&search',
+            url: '/nota?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'dentalApp.diagnostico.home.title'
+                pageTitle: 'dentalApp.nota.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/diagnostico/diagnosticos.html',
-                    controller: 'DiagnosticoController',
+                    templateUrl: 'app/entities/nota/notas.html',
+                    controller: 'NotaController',
                     controllerAs: 'vm'
                 }
             },
@@ -45,39 +45,37 @@
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('diagnostico');
+                    $translatePartialLoader.addPart('nota');
                     $translatePartialLoader.addPart('global');
-                    $translatePartialLoader.addPart('estadoDiagnostico');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('diagnostico-detail', {
-            parent: 'diagnostico',
-            url: '/diagnostico/{id}',
+        .state('nota-detail', {
+            parent: 'nota',
+            url: '/nota/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'dentalApp.diagnostico.detail.title'
+                pageTitle: 'dentalApp.nota.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/diagnostico/diagnostico-detail.html',
-                    controller: 'DiagnosticoDetailController',
+                    templateUrl: 'app/entities/nota/nota-detail.html',
+                    controller: 'NotaDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('diagnostico');
-                    $translatePartialLoader.addPart('estadoDiagnostico');
+                    $translatePartialLoader.addPart('nota');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Diagnostico', function($stateParams, Diagnostico) {
-                    return Diagnostico.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Nota', function($stateParams, Nota) {
+                    return Nota.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'diagnostico',
+                        name: $state.current.name || 'nota',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -85,24 +83,23 @@
                 }]
             }
         })
-        .state('diagnostico-detail.edit', {
-            parent: 'diagnostico-detail',
+        .state('nota-detail.edit', {
+            parent: 'nota-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/diagnostico/diagnostico-dialog.html',
-                    controller: 'DiagnosticoDialogController',
+                    templateUrl: 'app/entities/nota/nota-dialog.html',
+                    controller: 'NotaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Diagnostico', function(Diagnostico) {
-                            return Diagnostico.get({id : $stateParams.id}).$promise;
-                        }],
-                        paciente: null
+                        entity: ['Nota', function(Nota) {
+                            return Nota.get({id : $stateParams.id}).$promise;
+                        }]
                     }
                 }).result.then(function() {
                     $state.go('^', {}, { reload: false });
@@ -111,16 +108,16 @@
                 });
             }]
         })
-        .state('diagnostico.new', {
-            parent: 'diagnostico',
+        .state('nota.new', {
+            parent: 'nota',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/diagnostico/diagnostico-dialog.html',
-                    controller: 'DiagnosticoDialogController',
+                    templateUrl: 'app/entities/nota/nota-dialog.html',
+                    controller: 'NotaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -128,64 +125,64 @@
                         entity: function () {
                             return {
                                 fecha: null,
-                                descripcion: null,
+                                comentario: null,
+                                usuario: null,
                                 id: null
                             };
                         },
-                        paciente: null
+                        paciente :null
                     }
                 }).result.then(function() {
-                    $state.go('diagnostico', null, { reload: 'diagnostico' });
+                    $state.go('nota', null, { reload: 'nota' });
                 }, function() {
-                    $state.go('diagnostico');
+                    $state.go('nota');
                 });
             }]
         })
-        .state('diagnostico.edit', {
-            parent: 'diagnostico',
+        .state('nota.edit', {
+            parent: 'nota',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/diagnostico/diagnostico-dialog.html',
-                    controller: 'DiagnosticoDialogController',
+                    templateUrl: 'app/entities/nota/nota-dialog.html',
+                    controller: 'NotaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Diagnostico', function(Diagnostico) {
-                            return Diagnostico.get({id : $stateParams.id}).$promise;
-                        }],
-                        paciente: null
+                        entity: ['Nota', function(Nota) {
+                            return Nota.get({id : $stateParams.id}).$promise;
+                        }]
                     }
                 }).result.then(function() {
-                    $state.go('diagnostico', null, { reload: 'diagnostico' });
+                    $state.go('nota', null, { reload: 'nota' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('diagnostico.delete', {
-            parent: 'diagnostico',
+        .state('nota.delete', {
+            parent: 'nota',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/diagnostico/diagnostico-delete-dialog.html',
-                    controller: 'DiagnosticoDeleteController',
+                    templateUrl: 'app/entities/nota/nota-delete-dialog.html',
+                    controller: 'NotaDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Diagnostico', function(Diagnostico) {
-                            return Diagnostico.get({id : $stateParams.id}).$promise;
+                        entity: ['Nota', function(Nota) {
+                            return Nota.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('diagnostico', null, { reload: 'diagnostico' });
+                    $state.go('nota', null, { reload: 'nota' });
                 }, function() {
                     $state.go('^');
                 });

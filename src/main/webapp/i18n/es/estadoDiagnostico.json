@@ -1,0 +1,10 @@
+{
+    "dentalApp": {
+        "EstadoDiagnostico" : {
+            "null": "",
+            "PENDIENTE": "PENDIENTE",
+            "REALIZADO": "REALIZADO",
+            "CANCELADO": "CANCELADO"
+        }
+    }
+}

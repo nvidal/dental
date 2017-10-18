@@ -23,33 +23,51 @@
         </div>
     </div>
 
-    <!-- Cuadro de acciones -->
-    <div id="acciones" class="col-md-3">
-        <div class="panel panel-default">
+    <!-- Cuadro lateral IZQ -->
+    <div id="lateral-izq" class="col-md-3">
+        <!-- Acciones -->
+        <div id="acciones" class="panel panel-default">
             <div class="panel-heading">
-            <div class="btn-cuadro" style="width: 100%">
-                <button type="submit"
-                        ui-sref="{{ vm.previousState }}"
-                        class="btn btn-info">
-                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-                </button>
-                <button type="button" ui-sref="paciente-home.edit({id:vm.paciente.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.edit"> Edit</span>
-                </button>
-                <button type="button" ui-sref="paciente-home.tratamiento({id:vm.paciente.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.tratamiento"> Tratamiento</span>
-                </button>
-                <button type="button" ui-sref="paciente-home.diagnostico({id:vm.paciente.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.diagnostico"> Diagnostico</span>
-                </button>
-                <button type="button" ui-sref="paciente-home.pago({id:vm.paciente.id})" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.pago"> Pago</span>
-                </button>
-            </div></div>
+                <div class="btn-cuadro" style="width: 100%">
+                    <button type="submit"
+                            ui-sref="{{ vm.previousState }}"
+                            class="btn btn-info">
+                        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+                    </button>
+                    <button type="button" ui-sref="paciente-home.edit({id:vm.paciente.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.edit"> Edit</span>
+                    </button>
+                    <button type="button" ui-sref="paciente-home.tratamiento({id:vm.paciente.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.tratamiento"> Tratamiento</span>
+                    </button>
+                    <button type="button" ui-sref="paciente-home.diagnostico({id:vm.paciente.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.diagnostico"> Diagnostico</span>
+                    </button>
+                    <button type="button" ui-sref="paciente-home.pago({id:vm.paciente.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.pago"> Pago</span>
+                    </button>
+                    <button type="button" ui-sref="paciente-home.nota({id:vm.paciente.id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-sm-down" data-translate="dentalApp.paciente.action.nota"> Pago</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Notas -->
+        <div id="notas" class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <span data-translate="dentalApp.paciente.home.notaLabel">Notas</span>
+                </div>
+            </div>
+                <div class="panel-nota panel-default" ng-repeat="n in vm.notas | orderBy : '-fecha'">
+                    <span class="usuario-nota">{{n.usuario}} ({{n.fecha | date:'mediumDate'}}):</span>
+                    <p>{{n.comentario}}</p>
+                </div>
         </div>
     </div>
 
@@ -165,7 +183,7 @@
                         <a ng-hide="vm.ocultarTratamientos" href="" ng-click="vm.ocultarTratamientos = !vm.ocultarTratamientos">Ocultar</a>
                     </div>
                 </div>
-                <div id="datos-pers-panel" uib-collapse="vm.ocultarTratamientos">
+                <div id="tratamientos-panel" uib-collapse="vm.ocultarTratamientos">
                     <div class="panel-body">
 
                     </div>
@@ -183,7 +201,7 @@
                         <a ng-hide="vm.ocultarDiagnosticos" href="" ng-click="vm.ocultarDiagnosticos = !vm.ocultarDiagnosticos">Ocultar</a>
                     </div>
                 </div>
-                <div id="datos-pers-panel" uib-collapse="vm.ocultarDiagnosticos">
+                <div id="diagnosticos-panel" uib-collapse="vm.ocultarDiagnosticos">
                     <div class="panel-body">
 
                     </div>
@@ -201,7 +219,7 @@
                         <a ng-hide="vm.ocultarPagos" href="" ng-click="vm.ocultarPagos = !vm.ocultarPagos">Ocultar</a>
                     </div>
                 </div>
-                <div id="datos-pers-panel" uib-collapse="vm.ocultarPagos">
+                <div id="pagos-panel" uib-collapse="vm.ocultarPagos">
                     <div class="panel-body">
 
                     </div>

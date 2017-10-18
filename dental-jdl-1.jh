@@ -21,6 +21,11 @@ entity Paciente {
 entity Diagnostico{
     fecha LocalDate required,
     descripcion String required,
+    estado EstadoDiagnostico required
+}
+
+enum EstadoDiagnostico{
+    PENDIENTE, REALIZADO, CANCELADO
 }
 
 entity Tratamiento{
@@ -40,10 +45,17 @@ entity Pago {
     monto Float required,
 }
 
+entity Nota {
+    fecha LocalDate required,
+    comentario String required,
+    usuario String required
+}
+
 relationship OneToMany {
     Paciente{tratamientos} to Tratamiento{paciente required},
-    Paciente{pagos} to Pago{paciente required}
-    Paciente{diagnosticos} to Diagnostico{paciente required}
+    Paciente{pagos} to Pago{paciente required},
+    Paciente{diagnosticos} to Diagnostico{paciente required},
+    Paciente{notas} to Nota{paciente required}
 }
 
 relationship ManyToOne {

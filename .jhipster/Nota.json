@@ -3,12 +3,6 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "pieza",
-            "otherEntityName": "pieza",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "paciente",
             "otherEntityName": "paciente",
@@ -24,23 +18,22 @@
             ]
         },
         {
-            "fieldName": "descripcion",
+            "fieldName": "comentario",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "estado",
-            "fieldType": "EstadoDiagnostico",
-            "fieldValues": "PENDIENTE,REALIZADO,CANCELADO",
+            "fieldName": "usuario",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "changelogDate": "20171013023249",
-    "entityTableName": "diagnostico",
+    "changelogDate": "20171018025250",
+    "entityTableName": "nota",
     "dto": "no",
     "pagination": "pagination",
     "service": "no"

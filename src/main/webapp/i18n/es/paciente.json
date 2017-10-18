@@ -10,14 +10,16 @@
                 "personalesLabel" : "Datos personales",
                 "diagnosticosLabel": "Diagnósticos",
                 "pagosLabel": "Pagos",
-                "tratamientoLabel" : "Tratamientos"
+                "tratamientoLabel" : "Tratamientos",
+                "notaLabel" : "Notas"
             },
             "action": {
                 "title": "Acciones",
                 "edit": "Editar datos",
                 "tratamiento": "Tratamiento",
                 "diagnostico": "Diagnostico",
-                "pago": "Pago"
+                "pago": "Pago",
+                "nota": "Nota"
             },
             "created": "Un nuevo Paciente ha sido creado con el identificador {{ param }}",
             "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",

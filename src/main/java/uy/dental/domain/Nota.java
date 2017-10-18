@@ -9,15 +9,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import uy.dental.domain.enumeration.EstadoDiagnostico;
-
 /**
- * A Diagnostico.
+ * A Nota.
  */
 @Entity
-@Table(name = "diagnostico")
+@Table(name = "nota")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Diagnostico implements Serializable {
+public class Nota implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,16 +29,12 @@ public class Diagnostico implements Serializable {
     private LocalDate fecha;
 
     @NotNull
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
+    @Column(name = "comentario", nullable = false)
+    private String comentario;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "estado", nullable = false)
-    private EstadoDiagnostico estado;
-
-    @ManyToOne
-    private Pieza pieza;
+    @Column(name = "usuario", nullable = false)
+    private String usuario;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -59,7 +53,7 @@ public class Diagnostico implements Serializable {
         return fecha;
     }
 
-    public Diagnostico fecha(LocalDate fecha) {
+    public Nota fecha(LocalDate fecha) {
         this.fecha = fecha;
         return this;
     }
@@ -68,50 +62,37 @@ public class Diagnostico implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getComentario() {
+        return comentario;
     }
 
-    public Diagnostico descripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public Nota comentario(String comentario) {
+        this.comentario = comentario;
         return this;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
-    public EstadoDiagnostico getEstado() {
-        return estado;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public Diagnostico estado(EstadoDiagnostico estado) {
-        this.estado = estado;
+    public Nota usuario(String usuario) {
+        this.usuario = usuario;
         return this;
     }
 
-    public void setEstado(EstadoDiagnostico estado) {
-        this.estado = estado;
-    }
-
-    public Pieza getPieza() {
-        return pieza;
-    }
-
-    public Diagnostico pieza(Pieza pieza) {
-        this.pieza = pieza;
-        return this;
-    }
-
-    public void setPieza(Pieza pieza) {
-        this.pieza = pieza;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public Paciente getPaciente() {
         return paciente;
     }
 
-    public Diagnostico paciente(Paciente paciente) {
+    public Nota paciente(Paciente paciente) {
         this.paciente = paciente;
         return this;
     }
@@ -129,11 +110,11 @@ public class Diagnostico implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Diagnostico diagnostico = (Diagnostico) o;
-        if (diagnostico.getId() == null || getId() == null) {
+        Nota nota = (Nota) o;
+        if (nota.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), diagnostico.getId());
+        return Objects.equals(getId(), nota.getId());
     }
 
     @Override
@@ -143,11 +124,11 @@ public class Diagnostico implements Serializable {
 
     @Override
     public String toString() {
-        return "Diagnostico{" +
+        return "Nota{" +
             "id=" + getId() +
             ", fecha='" + getFecha() + "'" +
-            ", descripcion='" + getDescripcion() + "'" +
-            ", estado='" + getEstado() + "'" +
+            ", comentario='" + getComentario() + "'" +
+            ", usuario='" + getUsuario() + "'" +
             "}";
     }
 }

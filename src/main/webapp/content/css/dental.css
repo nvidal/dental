@@ -25,6 +25,25 @@
     vertical-align: middle;
 }
 
+.panel-nota {
+
+    margin: 5px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-color: #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.usuario-nota{
+    color: #828282;
+}
+
+textarea {
+    resize: none;
+}
 /*
 .btn {
     padding: 14px 24px;

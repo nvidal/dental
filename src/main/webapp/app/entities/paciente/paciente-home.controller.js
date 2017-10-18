@@ -5,14 +5,16 @@
         .module('dentalApp')
         .controller('PacienteHomeController', PacienteHomeController);
 
-    PacienteHomeController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Paciente', 'Tratamiento', 'Pago', 'Diagnostico'];
+    PacienteHomeController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Paciente', 'Tratamiento', 'Pago', 'Diagnostico', 'Nota'];
 
-    function PacienteHomeController($scope, $rootScope, $stateParams, previousState, entity, Paciente, Tratamiento, Pago, Diagnostico) {
+    function PacienteHomeController($scope, $rootScope, $stateParams, previousState, entity, Paciente, Tratamiento, Pago, Diagnostico, Nota) {
         var vm = this;
 
         vm.paciente = entity;
         console.log(entity);
         //vm.trats = Tratamiento.query();
+        vm.notas = Nota.query();
+        console.log(vm.notas);
 
         vm.saldo = 2000;
         vm.previousState = previousState.name;

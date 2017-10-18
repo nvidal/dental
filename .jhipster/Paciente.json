@@ -18,6 +18,12 @@
             "relationshipName": "diagnosticos",
             "otherEntityName": "diagnostico",
             "otherEntityRelationshipName": "paciente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "notas",
+            "otherEntityName": "nota",
+            "otherEntityRelationshipName": "paciente"
         }
     ],
     "fields": [
