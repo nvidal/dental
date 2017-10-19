@@ -21,6 +21,11 @@
             "estado": "Estado",
             "pieza": "Pieza",
             "paciente": "Paciente"
+        },
+        "EstadoDiagnostico": {
+            "PENDIENTE": "PENDIENTE",
+            "REALIZADO": "REALIZADO",
+            "CANCELADO": "CANCELADO"
         }
     }
 }

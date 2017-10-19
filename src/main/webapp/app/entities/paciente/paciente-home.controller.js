@@ -12,7 +12,9 @@
 
         vm.paciente = entity;
         console.log(entity);
-        //vm.trats = Tratamiento.query();
+        vm.trats = Tratamiento.query();
+        vm.diags = Diagnostico.query();
+        vm.pagos = Pago.query();
         vm.notas = Nota.query();
         console.log(vm.notas);
 

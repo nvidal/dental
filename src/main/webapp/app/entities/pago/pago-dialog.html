@@ -14,43 +14,44 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.pago.id" readonly />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.pago.fecha" for="field_fecha">Fecha</label>
-                <div class="input-group">
-                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.pago.fecha" is-open="vm.datePickerOpenStatus.fecha"
-                    required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.pago.fecha" for="field_fecha">Fecha</label>
+                    <div class="input-group">
+                        <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.pago.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                        required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                <div ng-show="editForm.fecha.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
                 </div>
-            <div ng-show="editForm.fecha.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.pago.monto" for="field_monto">Monto</label>
-            <input type="number" class="form-control" name="monto" id="field_monto"
-                   ng-model="vm.pago.monto"
-                   required/>
-            <div ng-show="editForm.monto.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.monto.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.monto.$error.number" data-translate="entity.validation.number">
-                    This field should be a number.
-                </p>
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.pago.monto" for="field_monto">Monto</label>
+                <input type="number" class="form-control" name="monto" id="field_monto"
+                       ng-model="vm.pago.monto"
+                       required/>
+                <div ng-show="editForm.monto.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.monto.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.monto.$error.number" data-translate="entity.validation.number">
+                        This field should be a number.
+                    </p>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="dentalApp.pago.observacion" for="field_observacion">Observacion</label>
-            <input type="text" class="form-control" name="observacion" id="field_observacion"
-                    ng-model="vm.pago.observacion"
-                    />
+            <textarea type="text" class="form-control" name="observacion" id="field_observacion"
+                    ng-model="vm.pago.observacion" rows="2"></textarea>
         </div>
         <div class="form-group" ng-show="vm.mostrarPaciente">
             <label data-translate="dentalApp.pago.paciente" for="field_paciente">Paciente</label>

@@ -13,79 +13,88 @@
         <h5 class="modal-title" style="text-align: center;" id="personales" data-translate="dentalApp.paciente.home.personalesLabel">Datos personales</h5>
         <hr>
 
-        <div class="form-group" ng-show="vm.paciente.id">
-            <label for="id" data-translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.paciente.id" readonly />
+        <div class="row">
+            <div class="form-group col-xs-6" ng-show="vm.paciente.id">
+                <label for="id" data-translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                        ng-model="vm.paciente.id" readonly />
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.fecha" for="field_fecha">Fecha</label>
+                    <div class="input-group">
+                        <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.paciente.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.fecha" for="field_fecha">Fecha</label>
-                <div class="input-group">
-                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.paciente.fecha" is-open="vm.datePickerOpenStatus.fecha"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.nombres" for="field_nombres">Nombres</label>
+                <input type="text" class="form-control" name="nombres" id="field_nombres"
+                        ng-model="vm.paciente.nombres"
+                        required/>
+                <div ng-show="editForm.nombres.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.nombres.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
                 </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.nombres" for="field_nombres">Nombres</label>
-            <input type="text" class="form-control" name="nombres" id="field_nombres"
-                    ng-model="vm.paciente.nombres"
-                    required/>
-            <div ng-show="editForm.nombres.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.nombres.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.apellidos" for="field_apellidos">Apellidos</label>
+                <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                        ng-model="vm.paciente.apellidos"
+                        required/>
+                <div ng-show="editForm.apellidos.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.apellidos.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.apellidos" for="field_apellidos">Apellidos</label>
-            <input type="text" class="form-control" name="apellidos" id="field_apellidos"
-                    ng-model="vm.paciente.apellidos"
-                    required/>
-            <div ng-show="editForm.apellidos.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.apellidos.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.cedula" for="field_cedula">Cedula</label>
+                <input type="text" class="form-control" name="cedula" id="field_cedula"
+                       ng-model="vm.paciente.cedula"
+                       required/>
+                <div ng-show="editForm.cedula.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.cedula.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.mail" for="field_mail">Mail</label>
+                <input type="text" class="form-control" name="mail" id="field_mail"
+                       ng-model="vm.paciente.mail"
+                />
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.cedula" for="field_cedula">Cedula</label>
-            <input type="text" class="form-control" name="cedula" id="field_cedula"
-                   ng-model="vm.paciente.cedula"
-                   required/>
-            <div ng-show="editForm.cedula.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.cedula.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.telefono" for="field_telefono">Telefono</label>
+                <input type="text" class="form-control" name="telefono" id="field_telefono"
+                        ng-model="vm.paciente.telefono"
+                        />
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.telefono" for="field_telefono">Telefono</label>
-            <input type="text" class="form-control" name="telefono" id="field_telefono"
-                    ng-model="vm.paciente.telefono"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.celular" for="field_celular">Celular</label>
-            <input type="text" class="form-control" name="celular" id="field_celular"
-                    ng-model="vm.paciente.celular"
-                    />
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.paciente.celular" for="field_celular">Celular</label>
+                <input type="text" class="form-control" name="celular" id="field_celular"
+                        ng-model="vm.paciente.celular"
+                        />
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="dentalApp.paciente.direccion" for="field_direccion">Direccion</label>
             <input type="text" class="form-control" name="direccion" id="field_direccion"
                     ng-model="vm.paciente.direccion"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.paciente.mail" for="field_mail">Mail</label>
-            <input type="text" class="form-control" name="mail" id="field_mail"
-                    ng-model="vm.paciente.mail"
                     />
         </div>
 

@@ -19,6 +19,9 @@
             vm.diagnostico.paciente = paciente;
             vm.mostrarPaciente = false;
         }
+        if (vm.diagnostico.id === null){
+            vm.diagnostico.estado = 'PENDIENTE';
+        }
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;

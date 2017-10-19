@@ -185,7 +185,28 @@
                 </div>
                 <div id="tratamientos-panel" uib-collapse="vm.ocultarTratamientos">
                     <div class="panel-body">
-
+                        <table class="jh-table table table-striped">
+                            <thead>
+                            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                                <th jh-sort-by="fecha"><span data-translate="dentalApp.tratamiento.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                <th jh-sort-by="pieza.numeroPieza"><span data-translate="dentalApp.tratamiento.pieza">Pieza</span> <span class="glyphicon glyphicon-sort"></span></th>
+                                <th><span data-translate="dentalApp.tratamiento.procedimiento">Procedimiento</span></th>
+                                <th><span data-translate="dentalApp.tratamiento.precio">Precio</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="tratamiento in vm.trats | orderBy:'fecha'">
+                                    <td>{{tratamiento.fecha | date:'mediumDate'}}</td>
+                                    <td>{{tratamiento.pieza.numeroPieza}} ({{tratamiento.pieza.nombre}})</td>
+                                    <td>{{tratamiento.procedimiento}}</td>
+                                    <td>{{tratamiento.precio | currency: '$'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+                            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,7 +242,22 @@
                 </div>
                 <div id="pagos-panel" uib-collapse="vm.ocultarPagos">
                     <div class="panel-body">
-
+                        <table class="jh-table table table-striped">
+                            <thead>
+                            <tr>
+                                <th><span data-translate="dentalApp.pago.fecha">Fecha</span></th>
+                                <th><span data-translate="dentalApp.pago.observacion">Observacion</span></th>
+                                <th><span data-translate="dentalApp.pago.monto">Monto</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="pago in vm.pagos | orderBy : '-fecha'">
+                                <td>{{pago.fecha | date:'mediumDate'}}</td>
+                                <td>{{pago.observacion}}</td>
+                                <td>{{pago.monto | currency:'$'}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

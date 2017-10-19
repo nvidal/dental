@@ -14,33 +14,35 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.diagnostico.id" readonly />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="dentalApp.diagnostico.fecha" for="field_fecha">Fecha</label>
-                <div class="input-group">
-                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.diagnostico.fecha" is-open="vm.datePickerOpenStatus.fecha"
-                    required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label" data-translate="dentalApp.diagnostico.fecha" for="field_fecha">Fecha</label>
+                    <div class="input-group">
+                        <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.diagnostico.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                        required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                <div ng-show="editForm.fecha.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
                 </div>
-            <div ng-show="editForm.fecha.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.fecha.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
+            </div>
+            <div class="form-group col-xs-6">
+                <label data-translate="dentalApp.diagnostico.pieza" for="field_pieza">Pieza</label>
+                <select class="form-control" id="field_pieza" name="pieza" ng-model="vm.diagnostico.pieza" ng-options="pieza as pieza.numeroPieza+' ('+pieza.nombre+')' for pieza in vm.piezas track by pieza.id">
+                    <option value=""></option>
+                </select>
             </div>
         </div>
         <div class="form-group">
-            <label data-translate="dentalApp.diagnostico.pieza" for="field_pieza">Pieza</label>
-            <select class="form-control" id="field_pieza" name="pieza" ng-model="vm.diagnostico.pieza" ng-options="pieza as pieza.numeroPieza+' ('+pieza.nombre+')' for pieza in vm.piezas track by pieza.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
             <label class="control-label" data-translate="dentalApp.diagnostico.descripcion" for="field_descripcion">Descripcion</label>
-            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
-                    ng-model="vm.diagnostico.descripcion"
-                    required/>
+            <textarea type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.diagnostico.descripcion" rows="3" cols="50"
+                      required></textarea>
             <div ng-show="editForm.descripcion.$invalid">
                 <p class="help-block"
                     ng-show="editForm.descripcion.$error.required" data-translate="entity.validation.required">
@@ -48,7 +50,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-hide="vm.diagnostico.id == null">
             <label class="control-label" data-translate="dentalApp.diagnostico.estado" for="field_estado">Estado</label>
             <select class="form-control" name="estado" ng-model="vm.diagnostico.estado" id="field_estado" required>
                 <option value="PENDIENTE" data-translate="dentalApp.EstadoDiagnostico.PENDIENTE">PENDIENTE</option>

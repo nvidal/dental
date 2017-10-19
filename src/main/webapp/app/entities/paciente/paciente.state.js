@@ -216,6 +216,8 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('paciente');
+                    $translatePartialLoader.addPart('pago');
+                    $translatePartialLoader.addPart('tratamiento');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Paciente', function($stateParams, Paciente) {
