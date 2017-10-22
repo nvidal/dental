@@ -11,13 +11,13 @@
             "updated": "Un Pago ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Pago ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Pago {{ id }}?"
+                "question": "¿Seguro que quiere eliminar el Pago {{ id }}?"
             },
             "detail": {
                 "title": "Pago"
             },
             "fecha": "Fecha",
-            "observacion": "Observacion",
+            "observacion": "Observación",
             "monto": "Monto",
             "paciente": "Paciente"
         }

@@ -91,11 +91,19 @@ public class PagoResource {
      */
     @GetMapping("/pagos")
     @Timed
-    public ResponseEntity<List<Pago>> getAllPagos(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<Pago>> getAllPagos(@ApiParam Pageable pageable, @RequestParam(value = "paciente",required = false) Long idPaciente) {
         log.debug("REST request to get a page of Pagos");
-        Page<Pago> page = pagoRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pagos");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+        if (idPaciente!=null) {
+            Page<Pago> page = pagoRepository.findByPacienteOrderByFechaDesc(idPaciente, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pagos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
+        else{
+            Page<Pago> page = pagoRepository.findAll(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pagos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
     }
 
     /**

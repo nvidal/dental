@@ -35,12 +35,39 @@
                         </button>
                     </div-->
 
+                    <!-- FILTRO -->
+
+
+
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" ui-sref="home.paciente" style="height: 46px; width: 100%">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    <span data-translate="home.createLabel">Create new Paciente</span>
+                                </button>
+                            </div>
+                            <br class="visible-xs">
+                            <div class="input-group col-sm-6">
+                                <input type="text" class="form-control input-lg" placeholder="Buscar por nombre o cedula" ng-model="vm.filtro"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="button" ng-click="vm.buscar()">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h1 data-translate="home.title-login">Listado de pacientes</h1>
+                            <hr>
+                        </div>
+
+
+
                     <!-- TABLA DE PACIENTES -->
-                    <h1 data-translate="home.title-login">Listado de pacientes</h1>
-                    <br>
                     <div class="table-responsive">
                         <table class="jh-table table table-striped">
-                            <thead>
+                            <thead class="t-head">
                             <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                                 <th jh-sort-by="nombres"><span data-translate="home.paciente.nombres">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                                 <th jh-sort-by="cedula"><span data-translate="home.paciente.cedula">Cedula</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -49,7 +76,7 @@
                                 <th jh-sort-by="mail"><span data-translate="home.paciente.mail">Mail</span> <span class="glyphicon glyphicon-sort"></span></th>
                             </tr>
                             </thead>
-                            <tbody style="text-align: left;">
+                            <tbody>
                             <tr ng-repeat="paciente in vm.pacientes track by paciente.id">
                                 <!--<td><a ui-sref="paciente-detail({id:paciente.id})">{{paciente.id}}</a></td>-->
                                 <td><a ui-sref="paciente-home({id:paciente.id})">{{paciente.nombres}} {{paciente.apellidos}}</a></td>
@@ -66,6 +93,7 @@
                         <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
                     </div>
                     <!-- FIN - TABLA DE PACIENTES -->
+                    </div>
 
                 </div>
 

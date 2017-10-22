@@ -2,25 +2,27 @@
     "dentalApp": {
         "diagnostico" : {
             "home": {
-                "title": "Diagnosticos",
-                "createLabel": "Crear nuevo Diagnostico",
-                "editLabel": "Editar Diagnostico",
-                "createOrEditLabel": "Crear o editar Diagnostico"
+                "title": "Diagnósticos",
+                "createLabel": "Crear nuevo Diagnóstico",
+                "editLabel": "Editar Diagnóstico",
+                "createOrEditLabel": "Crear o editar Diagnóstico"
             },
-            "created": "Un nuevo Diagnostico ha sido creado con el identificador {{ param }}",
-            "updated": "Un Diagnostico ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Diagnostico ha sido eliminado con el identificador {{ param }}",
+            "created": "Un nuevo Diagnóstico ha sido creado con el identificador {{ param }}",
+            "updated": "Un Diagnóstico ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Diagnóstico ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Diagnostico {{ id }}?"
+                "question": "¿Seguro que quiere eliminar el Diagnóstico {{ id }}?"
             },
             "detail": {
-                "title": "Diagnostico"
+                "title": "Diagnóstico"
             },
             "fecha": "Fecha",
-            "descripcion": "Descripcion",
+            "descripcion": "Descripción",
             "estado": "Estado",
             "pieza": "Pieza",
-            "paciente": "Paciente"
+            "paciente": "Paciente",
+            "setCancelar": "Cancelar diagnóstico",
+            "setRealizado": "Marcar como realizado"
         },
         "EstadoDiagnostico": {
             "PENDIENTE": "PENDIENTE",

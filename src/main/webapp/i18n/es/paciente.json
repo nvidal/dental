@@ -17,7 +17,7 @@
                 "title": "Acciones",
                 "edit": "Editar datos",
                 "tratamiento": "Tratamiento",
-                "diagnostico": "Diagnostico",
+                "diagnostico": "Diagnóstico",
                 "pago": "Pago",
                 "nota": "Nota"
             },
@@ -25,7 +25,7 @@
             "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Paciente ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Paciente {{ id }}?"
+                "question": "¿Seguro que quiere eliminar al Paciente {{ id }}?"
             },
             "detail": {
                 "title": "Paciente"
@@ -33,16 +33,16 @@
             "fecha": "Fecha",
             "nombres": "Nombres",
             "apellidos": "Apellidos",
-            "cedula": "Cedula",
-            "telefono": "Telefono",
+            "cedula": "Cédula",
+            "telefono": "Teléfono",
             "celular": "Celular",
-            "direccion": "Direccion",
+            "direccion": "Dirección",
             "mail": "Mail",
-            "alergico": "Alergico",
+            "alergico": "Alérgico",
             "diabetes": "Diabetes",
             "presionAlta": "Presión sanguinea alta",
             "tiroides": "Enfermedades de la tiroides",
-            "cicatrizacion": "Enfermedades sanguineas - cicatrización",
+            "cicatrizacion": "Enfermedades sanguíneas - cicatrización",
             "cardiaca": "Enfermedades cardíacas",
             "farmacos": "Fármacos que toma: anticoagulantes?",
             "procedimientos": "Procedimientos",

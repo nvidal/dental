@@ -9,7 +9,7 @@
                 "main": "Entidades",
                 "paciente": "Pacientes",
                 "pieza": "Piezas",
-                "diagnostico": "Diagnosticos",
+                "diagnostico": "Diagnósticos",
                 "tratamiento": "Tratamientos",
                 "pago": "Pagos",
                 "nota": "Notas",

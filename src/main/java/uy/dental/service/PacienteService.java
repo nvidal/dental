@@ -39,4 +39,15 @@ public interface PacienteService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+
+    /**
+     *  Get all the pacientes by nombre or apellido or ci.
+     *
+     *  @param filtro
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    Page<Paciente> findAllByFiltro(String filtro, Pageable pageable);
 }
+

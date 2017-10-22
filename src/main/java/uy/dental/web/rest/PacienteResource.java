@@ -98,6 +98,21 @@ public class PacienteResource {
     }
 
     /**
+     * GET  /pacientes/query{nombre} : get all the pacientes containing text.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of pacientes in body
+     */
+    @GetMapping("/pacientes/query")
+    @Timed
+    public ResponseEntity<List<Paciente>> getAllPacientesByFiltro(@RequestParam("filtro") String filtro, @ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of Pacientes");
+        Page<Paciente> page = pacienteService.findAllByFiltro(filtro, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pacientes/query?filtro="+filtro);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
      * GET  /pacientes/:id : get the "id" paciente.
      *
      * @param id the id of the paciente to retrieve

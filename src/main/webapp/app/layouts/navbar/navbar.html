@@ -31,26 +31,26 @@
                             <b class="caret"></b>
                         </span>
                     </a>
-                    <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active">
+                    <ul class="dropdown-menu" uib-dropdown-menu >
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                                 <a ui-sref="paciente" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-user"></span>&nbsp;
                                     <span data-translate="global.menu.entities.paciente">Pacientes</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                             <a ui-sref="diagnostico" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-th-list"></span>&nbsp;
                                 <span data-translate="global.menu.entities.diagnostico">Diagnosticos</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                             <a ui-sref="tratamiento" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-saved"></span>&nbsp;
                                 <span data-translate="global.menu.entities.tratamiento">Tratamientos</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                             <a ui-sref="pago" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-usd"></span>&nbsp;
                                 <span data-translate="global.menu.entities.pago">Pago</span>
@@ -62,7 +62,7 @@
                                 <span data-translate="global.menu.entities.pieza">Piezas</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                             <a ui-sref="nota" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.nota">Nota</span>

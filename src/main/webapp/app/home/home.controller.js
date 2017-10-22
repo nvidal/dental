@@ -6,12 +6,14 @@
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state',
-        'Paciente', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+        'PacienteFilter', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
     function HomeController ($scope, Principal, LoginService, $state,
-                             Paciente, ParseLinks, AlertService, paginationConstants, pagingParams) {
+                             PacienteFilter, ParseLinks, AlertService, paginationConstants, pagingParams) {
         var vm = this;
 
+        vm.filtro = '';
+        vm.buscar = loadAll;
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -44,7 +46,8 @@
         loadAll();
 
         function loadAll () {
-            Paciente.query({
+            PacienteFilter.query({
+                filtro: vm.filtro,
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()

@@ -44,6 +44,12 @@
 textarea {
     resize: none;
 }
+
+.table > .t-head > tr > th {
+    /* vertical-align: bottom; */
+    /* border-bottom: 2px solid #ddd; */
+    text-align: center;
+}
 /*
 .btn {
     padding: 14px 24px;

@@ -41,8 +41,7 @@
         <div class="form-group">
             <label class="control-label" data-translate="dentalApp.tratamiento.procedimiento" for="field_procedimiento">Procedimiento</label>
             <textarea type="text" class="form-control" name="procedimiento" id="field_procedimiento"
-                    ng-model="vm.tratamiento.procedimiento" rows="3"
-                      required></textarea>
+                    ng-model="vm.tratamiento.procedimiento" rows="3" maxlength="250" required></textarea>
             <div ng-show="editForm.procedimiento.$invalid">
                 <p class="help-block"
                     ng-show="editForm.procedimiento.$error.required" data-translate="entity.validation.required">

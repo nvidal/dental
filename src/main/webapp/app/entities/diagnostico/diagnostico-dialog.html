@@ -41,8 +41,7 @@
         <div class="form-group">
             <label class="control-label" data-translate="dentalApp.diagnostico.descripcion" for="field_descripcion">Descripcion</label>
             <textarea type="text" class="form-control" name="descripcion" id="field_descripcion"
-                    ng-model="vm.diagnostico.descripcion" rows="3" cols="50"
-                      required></textarea>
+                    ng-model="vm.diagnostico.descripcion" rows="3" cols="50" maxlength="250" required></textarea>
             <div ng-show="editForm.descripcion.$invalid">
                 <p class="help-block"
                     ng-show="editForm.descripcion.$error.required" data-translate="entity.validation.required">

@@ -91,11 +91,20 @@ public class TratamientoResource {
      */
     @GetMapping("/tratamientos")
     @Timed
-    public ResponseEntity<List<Tratamiento>> getAllTratamientos(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<Tratamiento>> getAllTratamientos(@ApiParam Pageable pageable, @RequestParam(value = "paciente",required = false) Long idPaciente) {
         log.debug("REST request to get a page of Tratamientos");
-        Page<Tratamiento> page = tratamientoRepository.findAllByOrderByFechaDesc(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tratamientos");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+        if (idPaciente!=null) {
+            Page<Tratamiento> page = tratamientoRepository.findByPacienteOrderByFechaDesc(idPaciente, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tratamientos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
+        else{
+            Page<Tratamiento> page = tratamientoRepository.findAllByOrderByFechaDesc(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tratamientos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
+
     }
 
     /**

@@ -74,4 +74,10 @@ public class PacienteServiceImpl implements PacienteService{
         log.debug("Request to delete Paciente : {}", id);
         pacienteRepository.delete(id);
     }
+
+    @Override
+    public Page<Paciente> findAllByFiltro(String filtro, Pageable pageable) {
+        log.debug("Request to get all Pacientes by nombre");
+        return pacienteRepository.findByNombresContainsOrApellidosContainsOrCedulaContainsAllIgnoreCase(filtro, filtro, filtro, pageable);
+    }
 }

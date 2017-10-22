@@ -2,9 +2,10 @@
     'use strict';
     angular
         .module('dentalApp')
-        .factory('Paciente', Paciente);
+        .factory('Paciente', Paciente).factory('PacienteFilter', PacienteFilter);
 
     Paciente.$inject = ['$resource', 'DateUtils'];
+    PacienteFilter.$inject = ['$resource'];
 
     function Paciente ($resource, DateUtils) {
         var resourceUrl =  'api/pacientes/:id';
@@ -37,6 +38,14 @@
                     return angular.toJson(copy);
                 }
             }
+        });
+    }
+
+    function PacienteFilter ($resource) {
+        var resourceUrl =  'api/pacientes/query';
+
+        return $resource(resourceUrl, {}, {
+            'query': { method: 'GET', isArray: true}
         });
     }
 })();

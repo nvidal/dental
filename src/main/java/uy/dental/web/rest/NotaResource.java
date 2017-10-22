@@ -91,11 +91,18 @@ public class NotaResource {
      */
     @GetMapping("/notas")
     @Timed
-    public ResponseEntity<List<Nota>> getAllNotas(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<Nota>> getAllNotas(@ApiParam Pageable pageable, @RequestParam(value = "paciente",required = false) Long idPaciente) {
         log.debug("REST request to get a page of Notas");
-        Page<Nota> page = notaRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/notas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        if (idPaciente!=null) {
+            Page<Nota> page = notaRepository.findByPacienteOrderByFechaDesc(idPaciente, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/notas");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
+        else {
+            Page<Nota> page = notaRepository.findAllByOrderByFechaDesc(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/notas");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
     }
 
     /**

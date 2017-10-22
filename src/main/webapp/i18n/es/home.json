@@ -26,11 +26,12 @@
         "paciente": {
             "nombres": "Nombres",
             "apellidos": "Apellidos",
-            "cedula": "Cedula",
-            "telefono": "Telefono",
+            "cedula": "Cédula",
+            "telefono": "Teléfono",
             "celular": "Celular",
             "mail": "Mail",
             "saldo": "Saldo"
-        }
+        },
+        "createLabel": "Registrar Paciente"
     }
 }

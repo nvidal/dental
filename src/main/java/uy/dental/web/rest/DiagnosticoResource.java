@@ -91,11 +91,18 @@ public class DiagnosticoResource {
      */
     @GetMapping("/diagnosticos")
     @Timed
-    public ResponseEntity<List<Diagnostico>> getAllDiagnosticos(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<Diagnostico>> getAllDiagnosticos(@ApiParam Pageable pageable, @RequestParam(value = "paciente",required = false) Long idPaciente) {
         log.debug("REST request to get a page of Diagnosticos");
-        Page<Diagnostico> page = diagnosticoRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/diagnosticos");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        if (idPaciente!=null) {
+            Page<Diagnostico> page = diagnosticoRepository.findByPacienteOrderByFechaDesc(idPaciente, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/diagnosticos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
+        else{
+            Page<Diagnostico> page = diagnosticoRepository.findAllByOrderByFechaDesc(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/diagnosticos");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
     }
 
     /**

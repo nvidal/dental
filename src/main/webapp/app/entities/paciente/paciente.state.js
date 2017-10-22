@@ -218,6 +218,7 @@
                     $translatePartialLoader.addPart('paciente');
                     $translatePartialLoader.addPart('pago');
                     $translatePartialLoader.addPart('tratamiento');
+                    $translatePartialLoader.addPart('diagnostico');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Paciente', function($stateParams, Paciente) {
